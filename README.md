@@ -9,6 +9,9 @@ Browse and install them at **[imacropad.app/community](https://www.imacropad.app
 - **Like**: 👍 the item's issue (the website links to it). The website lists the most liked.
 - **Request**: [ask for something](../../issues/new?template=request.yml) or 👍 a request.
 - **Share yours**: [CONTRIBUTING.md](CONTRIBUTING.md).
+- **Build with AI**: the [MCP server](mcp/) gives an assistant the plugin format, starter plugins, themes and layouts,
+  and the validator (`claude mcp add imacropad -- npx -y @imacropad/mcp`); the [skill](skill/imacropad-community/)
+  teaches it the steps. The skill as a zip: [imacropad.app/community](https://www.imacropad.app/community/#ai).
 
 Every item is data, never code, and passes four gates before it is listed: the folder rules, the app's own
 validator, a review by Claude ([REVIEW.md](REVIEW.md)) and an editor. The app checks it again on the pad and on the Mac
@@ -22,6 +25,7 @@ before it installs it.
 | `scripts/catalog.mjs publish` | a release per new version, an issue per new item |
 | `scripts/catalog.mjs index` | `index.json` for the website, with installs, likes and requests |
 | `editors-picks.json` | the IDs shown under *Editors' picks* |
+| `mcp/`, `skill/` | the MCP server (`@imacropad/mcp`) and the assistant skill; `node mcp/scripts/gen-catalog.mjs --src <app repo>` after a change to the app's model |
 
 Claude is the catalog's first reviewer: the GitHub app [Claude](https://github.com/apps/claude) is installed on
 this repo, reviews every pull request as `claude[bot]` (advisory: it never approves) and answers editors who

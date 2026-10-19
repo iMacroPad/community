@@ -8,7 +8,7 @@ import { join, delimiter } from 'node:path';
 import { catalog, REPO } from './data.js';
 
 const CACHE = join(process.env.XDG_CACHE_HOME || join(homedir(), '.cache'), 'imacropad-mcp');
-const VALIDATOR_URL = `https://github.com/${REPO}/releases/download/validator/imacropadd`;
+const VALIDATOR_URL = process.env.IMACROPAD_VALIDATOR_URL || `https://github.com/${REPO}/releases/download/validator/imacropadd`;
 let downloadFailed = null;   // once per session: offline is not retried on every call
 
 /* ---------- finding the real validator ---------- */
@@ -183,11 +183,15 @@ function decodeProblem(p) {
     const f = w.frame; if (!f || ['x', 'y', 'w', 'h'].some(k => typeof f[k] !== 'number')) return `${at}.frame needs numbers x, y, w and h`;
     if (w.style?.tint && !tints.includes(w.style.tint)) return `${at}.style.tint “${w.style.tint}” is not one of ${tints.join(', ')}`;
     if (w.style?.shape && !C.shapes.includes(w.style.shape)) return `${at}.style.shape “${w.style.shape}”`;
+    for (const [k, o] of (w.options || []).entries()) if (!str(o?.label) || !o.action) return `${at}.options.${k}: “label” and “action” are needed`;
     return null;
   };
   for (const [i, pr] of (p.profiles || []).entries()) {
     if (!str(pr?.name)) return `profiles.${i}: “name” is missing`;
-    if (!pr.layout || !Array.isArray(pr.layout.widgets ?? [])) return `profiles.${i}: “layout” is missing`;
+    if (!pr.layout || typeof pr.layout !== 'object') return `profiles.${i}: “layout” is missing`;
+    // Layout decodes with Swift's synthesized Codable: all four fields are needed
+    for (const k of ['columns', 'rows', 'backgroundHex', 'widgets']) if (pr.layout[k] === undefined) return `“${k}” is missing at profiles.${i}.layout`;
+    if (!Array.isArray(pr.layout.widgets) || typeof pr.layout.columns !== 'number' || typeof pr.layout.rows !== 'number' || !str(pr.layout.backgroundHex)) return `profiles.${i}.layout: columns and rows are numbers, backgroundHex a string, widgets a list`;
     for (const [j, w] of (pr.layout.widgets || []).entries()) { const e = widget(w, `profiles.${i}.layout.widgets.${j}`); if (e) return e }
   }
   for (const [j, w] of (p.components || []).entries()) { const e = widget(w, `components.${j}`); if (e) return e }
@@ -199,6 +203,7 @@ function decodeProblem(p) {
   }
   for (const [i, x] of (p.integrations || []).entries()) {
     if (!str(x?.name) || !str(x?.url)) return `integrations.${i}: “name” and “url” are needed`;
+    for (const [k, f] of (x.find || []).entries()) if (!str(f?.title) || !str(f?.label) || !f.set || typeof f.set !== 'object') return `integrations.${i}.find.${k}: “title”, “label” and “set” are needed`;
     if (x.kind && !C.integrationKinds.includes(x.kind)) return `integrations.${i}.kind “${x.kind}”`;
     if (x.output && !C.integrationOutputs.includes(x.output)) return `integrations.${i}.output “${x.output}”`;
   }
@@ -209,7 +214,14 @@ function decodeProblem(p) {
   for (const [i, m] of (p.macros || []).entries()) if (!str(m?.name)) return `macros.${i}: “name” is missing`;
   for (const [i, t] of (p.triggers || []).entries()) if (!str(t?.event) || !t.action) return `triggers.${i}: “event” and “action” are needed`;
   const cases = new Set(C.actions.MacroAction.map(c => c.name));
-  for (const [place, a] of allActions(p)) { const [c] = caseOf(a); if (!cases.has(c)) return `${place}: “${clip(JSON.stringify(a), 50)}” is not an action` }
+  for (const [place, a] of allActions(p)) {
+    const [c, v] = caseOf(a);
+    if (!cases.has(c)) return `${place}: “${clip(JSON.stringify(a), 50)}” is not an action`;
+    // associated values are required unless optional in Swift (bundleID of menu / clickElement, otherwise of when)
+    const spec = C.actions.MacroAction.find(x => x.name === c);
+    for (const prm of spec.params) if (!prm.type.endsWith('?') && (v?.[prm.label] === undefined || v?.[prm.label] === null)) return `${place}: “${c}” needs “${prm.label}”`;
+    if (c === 'keyChord' && (!str(v._0?.key) || !Array.isArray(v._0?.modifiers))) return `${place}: a keyChord needs {"key": …, "modifiers": […]} (modifiers may be empty)`;
+  }
   return null;
 }
 

@@ -52,8 +52,11 @@ file may leave out whatever it does not use. Unknown fields are ignored. Colours
 | \`isDefault\` | bool | ignored for plugins (warning) |
 | \`id\` | UUID | left out, the app makes one |
 
-**Layout**: \`columns\` and \`rows\` (1–24, the editor's snap grid; use **12 × 8 for a landscape pad**), \`backgroundHex\`,
-\`widgets\` (at most 150).
+**Layout**: all four fields are **required**: \`columns\` and \`rows\` (1–24, the editor's snap grid; use **12 × 8 for a landscape pad**),
+\`backgroundHex\` (\`"#000000"\`), \`widgets\` (at most 150).
+
+Inside actions every value is required except the optional ones (\`menu.bundleID\`, \`clickElement.bundleID\`, \`when.otherwise\`);
+a \`keyChord\` always has \`modifiers\` (\`[]\` for none). \`chips\` options need \`label\` and \`action\`; a finder needs \`title\`, \`label\` and \`set\`.
 
 ## PadWidget
 

@@ -25,20 +25,22 @@ JavaScript port runs and the report says so; the catalog runs the real one on ev
 
 ## Install
 
-Needs Node 20 or later.
-
-**Claude Code**
+Needs Node 20 or later. One line, from this repository:
 
 ```sh
-claude mcp add imacropad -- npx -y @imacropad/mcp
+curl -fsSL https://raw.githubusercontent.com/iMacroPad/community/main/mcp/install.sh | sh
 ```
 
-**Claude Desktop**: Settings ▸ Developer ▸ Edit Config, then in `claude_desktop_config.json`:
+[`install.sh`](install.sh) puts the server in `~/.imacropad/mcp` (`IMACROPAD_MCP_DIR` to change it), installs its two
+packages and, when the `claude` command is there, adds it to Claude Code for every project. Run it again to update.
+
+**Claude Desktop**: Settings ▸ Developer ▸ Edit Config, then in `claude_desktop_config.json` (the script prints this
+block with your own path):
 
 ```json
 {
   "mcpServers": {
-    "imacropad": { "command": "npx", "args": ["-y", "@imacropad/mcp"] }
+    "imacropad": { "command": "node", "args": ["/Users/you/.imacropad/mcp/src/index.js"] }
   }
 }
 ```
@@ -50,17 +52,16 @@ claude mcp add imacropad -- npx -y @imacropad/mcp
 ```json
 {
   "servers": {
-    "imacropad": { "type": "stdio", "command": "npx", "args": ["-y", "@imacropad/mcp"] }
+    "imacropad": { "type": "stdio", "command": "node", "args": ["/Users/you/.imacropad/mcp/src/index.js"] }
   }
 }
 ```
 
-**From a clone** (until the package is on npm, or to change it):
+**From a clone** (to change it):
 
 ```sh
-cd community/mcp && npm install          # in the catalog's own repository the folder is mcp/
-node community/mcp/src/index.js          # what an MCP client starts; it talks over stdin and stdout
-claude mcp add imacropad -- node "$PWD/community/mcp/src/index.js"
+cd mcp && npm install
+claude mcp add imacropad -- node "$PWD/src/index.js"
 ```
 
 ## The skill

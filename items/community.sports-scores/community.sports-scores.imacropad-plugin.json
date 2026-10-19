@@ -2,7 +2,7 @@
   "format": 1,
   "id": "community.sports-scores",
   "name": "Sports scores",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "author": "iMacroPad community",
   "blurb": "Your teams in their own colours: team card, match countdown, scoreboard, full league tables (Europe, the US leagues, any country), player card, tennis rankings and Formula 1. Any sport and country: search, or browse sport ▸ country ▸ league. Five looks, six layouts. Data: TheSportsDB, ESPN, Jolpica.",
   "icon": "sportscourt",
@@ -580,6 +580,21 @@
             },
             "style": {
               "tint": "surface",
+              "label": "Charles Leclerc"
+            },
+            "infoID": "f1.driver",
+            "param": "leclerc"
+          },
+          {
+            "kind": "info",
+            "frame": {
+              "x": 0,
+              "y": 0.5,
+              "w": 0.3,
+              "h": 0.5
+            },
+            "style": {
+              "tint": "surface",
               "label": "Ferrari"
             },
             "infoID": "f1.team",
@@ -588,9 +603,9 @@
           {
             "kind": "info",
             "frame": {
-              "x": 0,
+              "x": 0.3,
               "y": 0.5,
-              "w": 0.5,
+              "w": 0.35,
               "h": 0.5
             },
             "style": {
@@ -602,9 +617,9 @@
           {
             "kind": "info",
             "frame": {
-              "x": 0.5,
+              "x": 0.65,
               "y": 0.5,
-              "w": 0.5,
+              "w": 0.35,
               "h": 0.5
             },
             "style": {

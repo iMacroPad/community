@@ -5,8 +5,8 @@ cards, tennis rankings and Formula 1. Any sport and any country.
 
 Six ready layouts, each a page of the app's own sports panels:
 
-- **Formula 1**: the next race with a live countdown and every session time in your time zone, a driver card
-  (Lewis Hamilton), a team card (Ferrari), and the drivers' and constructors' standings.
+- **Formula 1**: the next race with a live countdown and every session time in your time zone, driver cards
+  with their photos (Lewis Hamilton, Charles Leclerc), a team card with the car (Ferrari), and the drivers' and constructors' standings.
 - **Football · Süper Lig**: Galatasaray's club card with the next and last match, a countdown to the next match,
   the last result as a scoreboard, the full league table and a player card (Victor Osimhen).
 - **Football · Europe**: full Premier League, LaLiga and Champions League tables, and Real Madrid's card.

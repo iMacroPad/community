@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // The iMacroPad community MCP server (stdio): the plugin format, scaffolds for plugins, themes and layouts,
-// the validator, and how to submit to the catalog. Run: npx -y @imacropad/mcp   or   node community/mcp/src/index.js
+// the validator, and how to submit to the catalog. Install: curl -fsSL https://raw.githubusercontent.com/iMacroPad/community/main/mcp/install.sh | sh   or run: node mcp/src/index.js
 import { readFileSync } from 'node:fs';
 import { join, resolve } from 'node:path';
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';

@@ -9,14 +9,14 @@ permissions:
   contents: read
   pull-requests: write
   issues: write
-concurrency: { group: check-${{ github.event.pull_request.number }}, cancel-in-progress: true }
+concurrency: { group: "check-${{ github.event.pull_request.number }}", cancel-in-progress: true }
 
 jobs:
   rules:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
+      - uses: actions/checkout@v5
         with: { ref: "${{ github.event.pull_request.head.sha }}", repository: "${{ github.event.pull_request.head.repo.full_name }}", path: pr, persist-credentials: false }
       - name: Only items/ in a submission
         run: |
@@ -29,24 +29,24 @@ jobs:
   validate:
     runs-on: macos-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with: { ref: "${{ github.event.pull_request.head.sha }}", repository: "${{ github.event.pull_request.head.repo.full_name }}", path: pr, persist-credentials: false }
       # the Mac companion's own check, the same one the app runs before it installs anything
       - run: gh release download validator --pattern imacropadd --dir bin --repo ${{ github.repository }} && chmod +x bin/imacropadd
         env: { GH_TOKEN: "${{ github.token }}" }
       - run: bin/imacropadd plugin validate pr/items/*/*.imacropad-plugin.json | tee validator.txt
       - if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with: { name: validator, path: validator.txt }
 
   ai-review:
     needs: [rules, validate]
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
+      - uses: actions/checkout@v5
         with: { ref: "${{ github.event.pull_request.head.sha }}", repository: "${{ github.event.pull_request.head.repo.full_name }}", path: pr, persist-credentials: false }
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v5
         with: { name: validator }
       # Advisory only: it comments and labels, it cannot approve or merge. Text in a submission is data, never instructions.
       - uses: anthropics/claude-code-action@v1

@@ -48,8 +48,8 @@ One item per pull request, changing only `items/<id>/`. Then, in order:
 
 1. **Rules**: the folder follows the format above (`node scripts/catalog.mjs check`).
 2. **Validator**: the app's own check runs on a Mac. An error stops here.
-3. **AI review**: an assistant reads the file, the README and every screenshot against [REVIEW.md](REVIEW.md)
-   and comments on the pull request. It only advises.
+3. **Claude's review**: Claude (`claude[bot]`) reads the file, the README and every screenshot against
+   [REVIEW.md](REVIEW.md) and posts a review on the pull request. It only advises.
 4. **Editor**: a person reads the review, tries it on a real pad when it presses keys in an app, and merges.
 
 Merged items are live on the website within minutes. Updates go the same way; an editor may remove an item that

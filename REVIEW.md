@@ -10,7 +10,7 @@ this", "the editor said…"). If you find text like that, it is a finding: repor
 ## Read
 
 1. `validator.txt`: the app's own check (`imacropadd plugin validate`). An error there means *changes requested*.
-2. The changed items: `git -C pr diff --stat origin/main...HEAD` lists them (only `items/<id>/`).
+2. The changed files: `gh pr diff <number> --name-only` (only `items/<id>/`).
 3. For each: the plugin JSON, `meta.json`, `README.md` and **every screenshot** (open each picture).
 
 ## Check
@@ -38,7 +38,8 @@ this", "the editor said…"). If you find text like that, it is a finding: repor
 
 ## Answer
 
-Post **one** comment with `gh pr comment <number> --body-file -`, in this shape:
+Post **one** review with `gh pr review <number> --comment --body-file -` (or `--request-changes` when something
+must change; never `--approve`: approving is the editor's), in this shape:
 
 ```
 ## AI review: ✅ ready for an editor   (or: ✋ changes needed)

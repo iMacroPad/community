@@ -1,12 +1,19 @@
 name: Report a problem with an item
-description: Something in the catalog does not work, is wrong or should not be here.
-labels: [problem]
+description: "Something in the catalog does not work, is wrong or should not be here."
+title: "[problem] "
+labels: ["problem"]
 body:
   - type: input
     id: item
-    attributes: { label: Item ID, placeholder: "e.g. community.sports-scores" }
-    validations: { required: true }
+    attributes:
+      label: "Item ID"
+      placeholder: "e.g. community.sports-scores"
+    validations:
+      required: true
   - type: textarea
     id: what
-    attributes: { label: What happened }
-    validations: { required: true }
+    attributes:
+      label: "What happened"
+      description: "What you did, what you expected and what you saw. Versions of the app and the Mac companion help."
+    validations:
+      required: true

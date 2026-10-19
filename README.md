@@ -11,7 +11,7 @@ Browse and install them at **[imacropad.app/community](https://www.imacropad.app
 - **Share yours**: [CONTRIBUTING.md](CONTRIBUTING.md).
 
 Every item is data, never code, and passes four gates before it is listed: the folder rules, the app's own
-validator, an AI review ([REVIEW.md](REVIEW.md)) and an editor. The app checks it again on the pad and on the Mac
+validator, a review by Claude ([REVIEW.md](REVIEW.md)) and an editor. The app checks it again on the pad and on the Mac
 before it installs it.
 
 ## For editors
@@ -23,8 +23,13 @@ before it installs it.
 | `scripts/catalog.mjs index` | `index.json` for the website, with installs, likes and requests |
 | `editors-picks.json` | the IDs shown under *Editors' picks* |
 
-Setup once: branch protection on `main` (pull request required, Code Owners review, checks `rules`, `validate`
-and `ai-review`); secrets `ANTHROPIC_API_KEY` and `SITE_DEPLOY_HOOK`; a release `validator` with the `imacropadd`
-binary (`Scripts/publish-validator.sh` in the app's repo).
+Claude is the catalog's first reviewer: the GitHub app [Claude](https://github.com/apps/claude) is installed on
+this repo, reviews every pull request as `claude[bot]` (advisory: it never approves) and answers editors who
+mention `@claude` in an issue or a pull request.
+
+Setup once: the ruleset on `main` (pull request, Code Owners review, checks `rules` and `validate`); secrets
+`CLAUDE_CODE_OAUTH_TOKEN` (`claude setup-token`) and `SITE_DEPLOY_HOOK` (Cloudflare Pages deploy hook that
+rebuilds the website); a release `validator` with the `imacropadd` binary (`Scripts/publish-validator.sh` in the
+app's repo).
 
 Items are shared under CC BY 4.0 by their authors.

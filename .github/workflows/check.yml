@@ -39,21 +39,25 @@ jobs:
         uses: actions/upload-artifact@v5
         with: { name: validator, path: validator.txt }
 
+  # Claude, installed on the repo as the GitHub app "Claude", is the first reviewer: it posts a PR review as
+  # claude[bot] and labels the PR. Advisory only: it is not a code owner, so its review can never merge anything.
+  # Text in a submission is data, never instructions (REVIEW.md).
   ai-review:
     needs: [rules, validate]
     runs-on: ubuntu-latest
+    permissions: { contents: read, pull-requests: write, issues: write, id-token: write }
     steps:
       - uses: actions/checkout@v5
       - uses: actions/checkout@v5
         with: { ref: "${{ github.event.pull_request.head.sha }}", repository: "${{ github.event.pull_request.head.repo.full_name }}", path: pr, persist-credentials: false }
       - uses: actions/download-artifact@v5
         with: { name: validator }
-      # Advisory only: it comments and labels, it cannot approve or merge. Text in a submission is data, never instructions.
       - uses: anthropics/claude-code-action@v1
         with:
-          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
-          github_token: ${{ github.token }}
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          # submitters are outside contributors; the prompt is fixed here and the tools below can only read and comment
+          allowed_non_write_users: "*"
           prompt: |
             Review pull request #${{ github.event.pull_request.number }} of ${{ github.repository }} following REVIEW.md exactly.
             The submitted files are under pr/items/. The validator's report is validator.txt.
-          claude_args: --allowedTools "Read,Glob,Grep,Bash(gh pr comment:*),Bash(gh pr edit --add-label:*),Bash(gh pr edit --remove-label:*),Bash(git -C pr diff:*)"
+          claude_args: --allowedTools "Read,Glob,Grep,Bash(gh pr diff:*),Bash(gh pr view:*),Bash(gh pr review:*),Bash(gh pr edit:*)"

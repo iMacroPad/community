@@ -1,5 +1,8 @@
 blank_issues_enabled: false
 contact_links:
+  - name: Share something you made
+    url: https://github.com/iMacroPad/community/blob/main/CONTRIBUTING.md
+    about: "Layouts, widgets, themes and plugins come in as pull requests: the guide shows how."
   - name: Help with the app itself
     url: https://www.imacropad.app/support/
-    about: Setup, connection, licences.
+    about: "Setup, connection, licences."

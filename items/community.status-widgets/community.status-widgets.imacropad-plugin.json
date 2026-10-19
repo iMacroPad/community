@@ -2,15 +2,11 @@
   "format": 1,
   "id": "community.status-widgets",
   "name": "Status widgets",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "author": "iMacroPad community",
-  "blurb": "A general widget pack: a note card, a static HTML status board, a chart and two keys. Works on any layout.",
+  "blurb": "Is it down, or is it me? The status of the services you depend on — GitHub, Cloudflare, Claude, OpenAI, Vercel, npm, Docker, Jira, Figma and more, or any status page you add — with a coloured banner when something breaks and the incident's name, plus site monitors that check an address every 30 seconds and draw its response times and uptime. A Status board layout comes with it.",
   "icon": "square.grid.3x3.square",
   "permissions": [
-    {
-      "capability": "html",
-      "reason": "The status board is a small static HTML table; it has no script and loads nothing."
-    },
     {
       "capability": "keys",
       "reason": "The Screenshot key presses its system shortcut and the Scroll dial scrolls the page."
@@ -18,46 +14,79 @@
   ],
   "components": [
     {
-      "kind": "markdown",
+      "kind": "info",
       "frame": {
         "x": 0,
         "y": 0,
         "w": 0.5,
-        "h": 0.25
+        "h": 0.5
       },
       "style": {
         "tint": "surface",
-        "label": "Note card"
+        "label": "Developer services"
       },
-      "content": "# Today\n- Stand-up 10:00\n- Ship the **plugin** work\n- *Stretch*"
+      "infoID": "status.services",
+      "param": "github,cloudflare,claude,openai,vercel,npm,docker,supabase"
     },
     {
-      "kind": "html",
+      "kind": "info",
       "frame": {
         "x": 0,
         "y": 0,
         "w": 0.5,
-        "h": 0.25
+        "h": 0.5
       },
       "style": {
         "tint": "surface",
-        "label": "Status board"
+        "label": "Work tools"
       },
-      "content": "<table style=\"width:100%\"><tr><th style=\"text-align:left\">Service</th><th>State</th></tr><tr><td>API</td><td style=\"color:#4CD964\">● up</td></tr><tr><td>Builds</td><td style=\"color:#FFCC00\">● slow</td></tr><tr><td>Mail</td><td style=\"color:#4CD964\">● up</td></tr></table>"
+      "infoID": "status.services",
+      "param": "atlassian,jira,figma,notion,linear,discord,dropbox,stripe"
     },
     {
-      "kind": "chart",
+      "kind": "info",
       "frame": {
         "x": 0,
         "y": 0,
         "w": 0.5,
-        "h": 0.25
+        "h": 0.5
       },
       "style": {
         "tint": "surface",
-        "label": "Week"
+        "label": "apple.com"
       },
-      "content": "line\nMon, 3\nTue, 5\nWed, 4\nThu, 8\nFri, 6"
+      "infoID": "status.site",
+      "param": "https://www.apple.com"
+    },
+    {
+      "kind": "info",
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 0.5,
+        "h": 0.5
+      },
+      "style": {
+        "tint": "surface",
+        "label": "github.com"
+      },
+      "infoID": "status.site",
+      "param": "https://github.com"
+    },
+    {
+      "kind": "info",
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 0.5,
+        "h": 0.5
+      },
+      "style": {
+        "tint": "surface",
+        "label": "Your site"
+      },
+      "infoID": "status.site",
+      "param": "https://www.imacropad.app"
     },
     {
       "kind": "button",
@@ -108,6 +137,94 @@
           "dx": 0,
           "dy": -3
         }
+      }
+    }
+  ],
+  "profiles": [
+    {
+      "name": "Status board",
+      "icon": "checkmark.seal",
+      "layout": {
+        "columns": 12,
+        "rows": 8,
+        "backgroundHex": "#000000",
+        "widgets": [
+          {
+            "kind": "info",
+            "frame": {
+              "x": 0,
+              "y": 0,
+              "w": 0.55,
+              "h": 0.5
+            },
+            "style": {
+              "tint": "surface",
+              "label": "Developer services"
+            },
+            "infoID": "status.services",
+            "param": "github,cloudflare,claude,openai,vercel,npm,docker,supabase"
+          },
+          {
+            "kind": "info",
+            "frame": {
+              "x": 0,
+              "y": 0.5,
+              "w": 0.55,
+              "h": 0.5
+            },
+            "style": {
+              "tint": "surface",
+              "label": "Work tools"
+            },
+            "infoID": "status.services",
+            "param": "atlassian,jira,figma,notion,linear,discord,dropbox,stripe"
+          },
+          {
+            "kind": "info",
+            "frame": {
+              "x": 0.55,
+              "y": 0,
+              "w": 0.45,
+              "h": 0.3333333333333333
+            },
+            "style": {
+              "tint": "surface",
+              "label": "apple.com"
+            },
+            "infoID": "status.site",
+            "param": "https://www.apple.com"
+          },
+          {
+            "kind": "info",
+            "frame": {
+              "x": 0.55,
+              "y": 0.3333333333333333,
+              "w": 0.45,
+              "h": 0.3333333333333333
+            },
+            "style": {
+              "tint": "surface",
+              "label": "github.com"
+            },
+            "infoID": "status.site",
+            "param": "https://github.com"
+          },
+          {
+            "kind": "info",
+            "frame": {
+              "x": 0.55,
+              "y": 0.6666666666666666,
+              "w": 0.45,
+              "h": 0.3333333333333333
+            },
+            "style": {
+              "tint": "surface",
+              "label": "Your site"
+            },
+            "infoID": "status.site",
+            "param": "https://www.imacropad.app"
+          }
+        ]
       }
     }
   ]

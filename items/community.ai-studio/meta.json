@@ -1,4 +1,3 @@
 { "type": "integration", "tags": ["ai", "gemini", "mcp", "clipboard"], "screenshots": [
-  { "file": "1.jpg", "caption": "The AI Studio layout in its own Neon theme, with the guide and a chart under the keys" },
-  { "file": "2.jpg", "caption": "The how-to card and the week's images" }
+  { "file": "1.jpg", "caption": "The AI Studio layout in its own Neon theme, with the how-to card under the keys" }
 ] }

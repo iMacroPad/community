@@ -16,6 +16,12 @@ imacropadd plugin validate your.id.imacropad-plugin.json
 imacropadd plugin test your.id.imacropad-plugin.json     # also against the real app on this Mac
 ```
 
+**With an assistant.** The [iMacroPad MCP server](mcp/) lets Claude, Cursor or another MCP app write the file with
+you: the format, starter plugins, themes and layouts, and the same validator (`claude mcp add imacropad -- npx -y @imacropad/mcp`).
+The [skill](skill/imacropad-community/) teaches it the steps, also without the server; download it from
+[imacropad.app/community](https://www.imacropad.app/community/#ai). Whatever an assistant makes goes through the same gates,
+and you still take the screenshots on your own pad.
+
 ## 2. Add one folder
 
 ```

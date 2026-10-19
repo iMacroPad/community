@@ -136,10 +136,14 @@ the item:
 
 The picked label is kept as `settings["team.title"]`, and a widget named after the old pick takes the new name.
 
-Community examples: [`community.usage-stats`](../plugins/community.usage-stats.imacropad-plugin.json) (the pad's
-stats as cards, a week chart and a leaderboard) and [`community.sports-scores`](../plugins/community.sports-scores.imacropad-plugin.json)
-(next match, last score, results and league tables for football, volleyball, NHL, NFL, F1… from TheSportsDB's
-free feed, ESPN and Jolpica; teams, leagues, players and drivers are picked by searching), each with ready layouts.
+Community examples: [`community.usage-stats`](../plugins/community.usage-stats.imacropad-plugin.json),
+[`community.sports-scores`](../plugins/community.sports-scores.imacropad-plugin.json) and
+[`community.status-widgets`](../plugins/community.status-widgets.imacropad-plugin.json). They are packs of the app's own
+info panels (`"kind": "info"` with an `infoID`, a `param` and `settings`) and ready layouts — no HTML: the Usage stats
+charts of Settings ▸ Stats; Sports & F1 (team card, next match, last result, full league tables from ESPN for the big
+leagues and TheSportsDB for any other, player card, tennis rankings, Formula 1 from Jolpica) with five looks
+(`settings.look`: club, photo, scoreboard, minimal, or automatic); and service status pages and site monitors. An AI
+assistant can make packs like these with the community MCP server and skill (see community/README.md).
 
 ## On the pad: Settings ▸ Plugins
 

@@ -233,6 +233,10 @@
   {
    "id": "stat",
    "title": "Show"
+  },
+  {
+   "id": "tour",
+   "title": "Tour"
   }
  ],
  "infoPanels": [
@@ -754,6 +758,19 @@
    "default": "34172022",
    "w": 3,
    "h": 3,
+   "interactive": false
+  },
+  {
+   "id": "sports.tennis",
+   "name": "Tennis ranking",
+   "icon": "figure.tennis",
+   "group": "sports",
+   "source": "web",
+   "param": "tour",
+   "paramTitle": "Tour",
+   "default": "atp",
+   "w": 3,
+   "h": 4,
    "interactive": false
   },
   {

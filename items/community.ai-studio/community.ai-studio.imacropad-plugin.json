@@ -164,6 +164,20 @@
         }
        }
       }
+     },
+     {
+      "kind": "markdown",
+      "frame": {
+       "x": 0,
+       "y": 0.625,
+       "w": 1,
+       "h": 0.375
+      },
+      "style": {
+       "tint": "surface",
+       "label": "How to use"
+      },
+      "content": "## AI Studio\n1. **Copy** a prompt\n2. Press *Image* or *Answer*\n3. The result opens or lands on the clipboard"
      }
     ]
    }
@@ -193,7 +207,7 @@
    "headers": {
     "x-goog-api-key": "${secret:GEMINI_API_KEY}"
    },
-   "body": "{\"contents\":[{\"parts\":[{\"text\":\"${clipboard}\"}]}]}",
+   "body": "{\"contents\":[{\"parts\":[{\"text\":\"Answer in two or three sentences. ${clipboard}\"}]}]}",
    "extract": "candidates.0.content.parts.*.text",
    "output": "copy"
   },

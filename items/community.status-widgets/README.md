@@ -4,10 +4,12 @@ Is it down, or is it me? The status of the services you depend on, and your own 
 
 - **Service status**: GitHub, Cloudflare, Claude, OpenAI, Vercel, npm, Docker, Supabase, Atlassian, Jira,
   Figma, Notion, Linear, Discord, Dropbox, Stripe and more, or any status page you add. When something breaks,
-  the panel's banner turns orange or red and names the incident.
+  the panel's banner turns orange or red and names the incident. A minor note on one
+  service (such as degraded performance) shows on its row without changing the banner.
 - **Site monitors**: check an address every 30 seconds and draw its response time and uptime.
-- A **Status board** layout with two service groups (developer services, work tools) and three site monitors.
-- A **Screenshot** key and a **Scroll** dial for the page you are looking at.
+- A **Status board** layout with two service groups (developer services, work tools) and three site monitors:
+  apple.com, github.com and www.imacropad.app, checked from the first run. Change or remove them in the editor.
+- A **Screenshot** key and a **Scroll** dial in the panel list, to add to any layout.
 
 ## Make it yours
 

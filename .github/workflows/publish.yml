@@ -1,5 +1,5 @@
 # After an editor merges: a release per new version (installs are its download count), an issue per new item
-# (likes are its 👍), then index.json, which the website reads. Every six hours too, so the numbers stay fresh.
+# (likes are its 👍), then index.json (on the branch "index"), which the website reads. Every six hours too, so the numbers stay fresh.
 name: Publish
 on:
   push: { branches: [main], paths: ["items/**", "editors-picks.json"] }
@@ -18,12 +18,17 @@ jobs:
       - run: node scripts/catalog.mjs check
       - run: node scripts/catalog.mjs publish
       - run: node scripts/catalog.mjs index
-      - name: Commit index.json
+      # index.json lives on the branch "index", not on main: main only takes reviewed pull requests
+      - name: Publish index.json
+        id: index
         run: |
-          git diff --quiet index.json && exit 0
-          git config user.name "catalog" && git config user.email "catalog@users.noreply.github.com"
-          git commit -m "index: $(date -u +%F)" index.json && git push
-      # rebuilds the website so /community/ shows it (Cloudflare Pages ▸ Settings ▸ Deploy hooks)
-      - if: env.HOOK != ''
+          git fetch -q origin index && git show FETCH_HEAD:index.json > old.json || true
+          cmp -s old.json index.json && exit 0
+          mkdir out && cp index.json out/ && cd out && git init -q -b index && git add index.json
+          git -c user.name=catalog -c user.email=catalog@users.noreply.github.com commit -qm "index: $(date -u +%FT%TZ)"
+          git push -fq "https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }}" index
+          echo "changed=1" >> "$GITHUB_OUTPUT"
+      # rebuilds the website so /community/ shows it (Cloudflare Pages deploy hook)
+      - if: steps.index.outputs.changed == '1' && env.HOOK != ''
         run: curl -fsS -X POST "$HOOK" > /dev/null
         env: { HOOK: "${{ secrets.SITE_DEPLOY_HOOK }}" }

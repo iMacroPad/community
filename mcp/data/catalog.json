@@ -1,0 +1,2661 @@
+{
+ "about": "Generated from the iMacroPad app's Swift model by scripts/gen-catalog.mjs. Info panel sizes (w, h) are grid cells; they read the same on a landscape 12×8 pad.",
+ "widgetKinds": [
+  {
+   "kind": "button",
+   "note": "tap → action"
+  },
+  {
+   "kind": "knob",
+   "note": "rotate CW → action, CCW → altAction, press → nothing/action"
+  },
+  {
+   "kind": "slider",
+   "note": "drag → setVolume-style continuous action"
+  },
+  {
+   "kind": "trackpad",
+   "note": "relative pointer + click"
+  },
+  {
+   "kind": "trackball",
+   "note": "relative pointer, momentum"
+  },
+  {
+   "kind": "pencilArea",
+   "note": "Apple Pencil drawing surface (pointer + pressure)"
+  },
+  {
+   "kind": "label",
+   "note": "static text / icon, no action"
+  },
+  {
+   "kind": "toggle",
+   "note": "stateful button: action = turn on, altAction = turn off; `stateKey` mirrors server state"
+  },
+  {
+   "kind": "volumeKnob",
+   "note": "knob with RGB LED ring + level meter, follows the Mac's real output volume"
+  },
+  {
+   "kind": "colorWheel",
+   "note": "Photoshop-style HSB wheel (hue ring + saturation/brightness square) → photoshop(.setForeground)"
+  },
+  {
+   "kind": "brushPicker",
+   "note": "brush size / hardness / opacity → photoshop(.setBrush)"
+  },
+  {
+   "kind": "appSwitcher",
+   "note": "strip of running Mac apps (real icons) → activate / set manual target"
+  },
+  {
+   "kind": "obsScenes",
+   "note": "dynamic OBS scene (and source) buttons fed by the daemon's OBS state"
+  },
+  {
+   "kind": "obsStatus",
+   "note": "recording / on air / paused with the running time; tap re-reads OBS"
+  },
+  {
+   "kind": "obsMixer",
+   "note": "OBS's audio mixer: a fader and a mute key per input"
+  },
+  {
+   "kind": "obsPreview",
+   "note": "a live picture of what OBS records or streams"
+  },
+  {
+   "kind": "scrollStrip",
+   "note": "mouse scroll wheel: rolls along its long side, with momentum"
+  },
+  {
+   "kind": "roller",
+   "note": "creative-console roller: a cylinder on its side, rolled across its short side"
+  },
+  {
+   "kind": "rotary",
+   "note": "flat dial turned with a fingertip"
+  },
+  {
+   "kind": "chips",
+   "note": "a named group of pill buttons (`options`), e.g. model or effort"
+  },
+  {
+   "kind": "aiSessions",
+   "note": "the terminal tabs and panes that run an AI tool → bring one to the front"
+  },
+  {
+   "kind": "voice",
+   "note": "a big microphone: tap, speak a command (built-in or one's own), see what was heard and done"
+  },
+  {
+   "kind": "markdown",
+   "note": "formatted text from `content`, or from the integration its action names"
+  },
+  {
+   "kind": "html",
+   "note": "a static HTML page: no script, no network, no forms"
+  },
+  {
+   "kind": "chart",
+   "note": "bars, a line or an area from numbers in `content` or from an integration"
+  },
+  {
+   "kind": "info",
+   "note": "an information panel (clock, weather, Mac state…): which one is `infoID`, see InfoCatalog"
+  }
+ ],
+ "shapes": [
+  "roundedRect",
+  "rect",
+  "circle",
+  "capsule"
+ ],
+ "infoGroups": [
+  {
+   "id": "time",
+   "title": "Time",
+   "icon": "clock"
+  },
+  {
+   "id": "tools",
+   "title": "Tools",
+   "icon": "timer"
+  },
+  {
+   "id": "sky",
+   "title": "Weather & sky",
+   "icon": "cloud.sun"
+  },
+  {
+   "id": "personal",
+   "title": "Personal",
+   "icon": "person.crop.circle"
+  },
+  {
+   "id": "mac",
+   "title": "Mac",
+   "icon": "desktopcomputer"
+  },
+  {
+   "id": "market",
+   "title": "Market",
+   "icon": "chart.line.uptrend.xyaxis"
+  },
+  {
+   "id": "sports",
+   "title": "Sports & F1",
+   "icon": "sportscourt"
+  },
+  {
+   "id": "stats",
+   "title": "Usage stats",
+   "icon": "chart.bar.xaxis"
+  },
+  {
+   "id": "status",
+   "title": "Status",
+   "icon": "checkmark.seal"
+  }
+ ],
+ "infoSources": [
+  "local",
+  "web",
+  "calendar",
+  "mac"
+ ],
+ "infoParams": [
+  {
+   "id": "none",
+   "title": null
+  },
+  {
+   "id": "timeZone",
+   "title": "Time zone (e.g. Europe/Istanbul)"
+  },
+  {
+   "id": "date",
+   "title": "Date and title (2027-01-01|New Year)"
+  },
+  {
+   "id": "text",
+   "title": "Text"
+  },
+  {
+   "id": "command",
+   "title": "Command name (from the Mac's config)"
+  },
+  {
+   "id": "pair",
+   "title": "Currency pair (USD/TRY)"
+  },
+  {
+   "id": "coin",
+   "title": "Coin (bitcoin, ethereum…)"
+  },
+  {
+   "id": "minutes",
+   "title": "Minutes"
+  },
+  {
+   "id": "city",
+   "title": "City"
+  },
+  {
+   "id": "team",
+   "title": "Team"
+  },
+  {
+   "id": "league",
+   "title": "League"
+  },
+  {
+   "id": "player",
+   "title": "Player"
+  },
+  {
+   "id": "f1Driver",
+   "title": "Driver"
+  },
+  {
+   "id": "f1Team",
+   "title": "Team"
+  },
+  {
+   "id": "services",
+   "title": "Services"
+  },
+  {
+   "id": "url",
+   "title": "Web address (https://…)"
+  },
+  {
+   "id": "stat",
+   "title": "Show"
+  }
+ ],
+ "infoPanels": [
+  {
+   "id": "clock.digital",
+   "name": "Digital clock",
+   "icon": "clock",
+   "group": "time",
+   "source": "local",
+   "param": "none",
+   "paramTitle": null,
+   "default": null,
+   "w": 4,
+   "h": 2,
+   "interactive": false
+  },
+  {
+   "id": "clock.analog",
+   "name": "Analog clock",
+   "icon": "clock.fill",
+   "group": "time",
+   "source": "local",
+   "param": "none",
+   "paramTitle": null,
+   "default": null,
+   "w": 2,
+   "h": 2,
+   "interactive": false
+  },
+  {
+   "id": "clock.flip",
+   "name": "Flip clock",
+   "icon": "rectangle.split.2x1",
+   "group": "time",
+   "source": "local",
+   "param": "none",
+   "paramTitle": null,
+   "default": null,
+   "w": 4,
+   "h": 2,
+   "interactive": false
+  },
+  {
+   "id": "clock.world",
+   "name": "World clock",
+   "icon": "globe",
+   "group": "time",
+   "source": "local",
+   "param": "timeZone",
+   "paramTitle": "Time zone (e.g. Europe/Istanbul)",
+   "default": "Europe/London",
+   "w": 2,
+   "h": 2,
+   "interactive": false
+  },
+  {
+   "id": "date",
+   "name": "Date",
+   "icon": "calendar",
+   "group": "time",
+   "source": "local",
+   "param": "none",
+   "paramTitle": null,
+   "default": null,
+   "w": 2,
+   "h": 2,
+   "interactive": false
+  },
+  {
+   "id": "calendar.month",
+   "name": "Month calendar",
+   "icon": "calendar.badge.clock",
+   "group": "time",
+   "source": "local",
+   "param": "none",
+   "paramTitle": null,
+   "default": null,
+   "w": 3,
+   "h": 3,
+   "interactive": false
+  },
+  {
+   "id": "progress",
+   "name": "Day and year progress",
+   "icon": "chart.bar.fill",
+   "group": "time",
+   "source": "local",
+   "param": "none",
+   "paramTitle": null,
+   "default": null,
+   "w": 3,
+   "h": 2,
+   "interactive": false
+  },
+  {
+   "id": "countdown",
+   "name": "Countdown",
+   "icon": "hourglass",
+   "group": "time",
+   "source": "local",
+   "param": "date",
+   "paramTitle": "Date and title (2027-01-01|New Year)",
+   "default": "2027-01-01|New Year",
+   "w": 3,
+   "h": 2,
+   "interactive": false
+  },
+  {
+   "id": "timer",
+   "name": "Timer / pomodoro",
+   "icon": "timer",
+   "group": "tools",
+   "source": "local",
+   "param": "minutes",
+   "paramTitle": "Minutes",
+   "default": "25",
+   "w": 2,
+   "h": 2,
+   "interactive": true
+  },
+  {
+   "id": "stopwatch",
+   "name": "Stopwatch",
+   "icon": "stopwatch",
+   "group": "tools",
+   "source": "local",
+   "param": "none",
+   "paramTitle": null,
+   "default": null,
+   "w": 2,
+   "h": 2,
+   "interactive": true
+  },
+  {
+   "id": "note",
+   "name": "Note / quote",
+   "icon": "text.quote",
+   "group": "tools",
+   "source": "local",
+   "param": "text",
+   "paramTitle": "Text",
+   "default": "Make it work, make it right, make it fast.",
+   "w": 3,
+   "h": 2,
+   "interactive": false
+  },
+  {
+   "id": "battery.ipad",
+   "name": "iPad battery",
+   "icon": "battery.75",
+   "group": "tools",
+   "source": "local",
+   "param": "none",
+   "paramTitle": null,
+   "default": null,
+   "w": 2,
+   "h": 2,
+   "interactive": false
+  },
+  {
+   "id": "saver",
+   "name": "Start screensaver",
+   "icon": "moon.stars",
+   "group": "tools",
+   "source": "local",
+   "param": "none",
+   "paramTitle": null,
+   "default": null,
+   "w": 1,
+   "h": 1,
+   "interactive": true
+  },
+  {
+   "id": "weather.now",
+   "name": "Weather now",
+   "icon": "cloud.sun",
+   "group": "sky",
+   "source": "web",
+   "param": "city",
+   "paramTitle": "City",
+   "default": null,
+   "w": 3,
+   "h": 2,
+   "interactive": false
+  },
+  {
+   "id": "weather.hourly",
+   "name": "Next hours",
+   "icon": "clock.arrow.circlepath",
+   "group": "sky",
+   "source": "web",
+   "param": "city",
+   "paramTitle": "City",
+   "default": null,
+   "w": 4,
+   "h": 2,
+   "interactive": false
+  },
+  {
+   "id": "weather.daily",
+   "name": "5-day forecast",
+   "icon": "calendar.day.timeline.left",
+   "group": "sky",
+   "source": "web",
+   "param": "city",
+   "paramTitle": "City",
+   "default": null,
+   "w": 4,
+   "h": 3,
+   "interactive": false
+  },
+  {
+   "id": "air",
+   "name": "Air quality",
+   "icon": "aqi.medium",
+   "group": "sky",
+   "source": "web",
+   "param": "city",
+   "paramTitle": "City",
+   "default": null,
+   "w": 3,
+   "h": 2,
+   "interactive": false
+  },
+  {
+   "id": "sun",
+   "name": "Sunrise and sunset",
+   "icon": "sunrise",
+   "group": "sky",
+   "source": "web",
+   "param": "city",
+   "paramTitle": "City",
+   "default": null,
+   "w": 2,
+   "h": 2,
+   "interactive": false
+  },
+  {
+   "id": "moon",
+   "name": "Moon phase",
+   "icon": "moonphase.waxing.gibbous",
+   "group": "sky",
+   "source": "local",
+   "param": "none",
+   "paramTitle": null,
+   "default": null,
+   "w": 2,
+   "h": 2,
+   "interactive": false
+  },
+  {
+   "id": "events",
+   "name": "Next events",
+   "icon": "calendar.day.timeline.leading",
+   "group": "personal",
+   "source": "calendar",
+   "param": "none",
+   "paramTitle": null,
+   "default": null,
+   "w": 3,
+   "h": 3,
+   "interactive": false
+  },
+  {
+   "id": "timeline",
+   "name": "Now timeline",
+   "icon": "calendar.day.timeline.left",
+   "group": "personal",
+   "source": "calendar",
+   "param": "none",
+   "paramTitle": null,
+   "default": null,
+   "w": 3,
+   "h": 4,
+   "interactive": false
+  },
+  {
+   "id": "reminders",
+   "name": "Reminders",
+   "icon": "checklist",
+   "group": "personal",
+   "source": "calendar",
+   "param": "none",
+   "paramTitle": null,
+   "default": null,
+   "w": 3,
+   "h": 3,
+   "interactive": false
+  },
+  {
+   "id": "photos",
+   "name": "Photo frame",
+   "icon": "photo.on.rectangle",
+   "group": "personal",
+   "source": "local",
+   "param": "none",
+   "paramTitle": null,
+   "default": null,
+   "w": 4,
+   "h": 4,
+   "interactive": false
+  },
+  {
+   "id": "ai.sessions",
+   "name": "AI sessions",
+   "icon": "rectangle.stack.badge.person.crop",
+   "group": "mac",
+   "source": "mac",
+   "param": "none",
+   "paramTitle": null,
+   "default": null,
+   "w": 4,
+   "h": 3,
+   "interactive": true
+  },
+  {
+   "id": "mac.cpu",
+   "name": "Mac CPU",
+   "icon": "cpu",
+   "group": "mac",
+   "source": "mac",
+   "param": "none",
+   "paramTitle": null,
+   "default": null,
+   "w": 2,
+   "h": 2,
+   "interactive": false
+  },
+  {
+   "id": "mac.memory",
+   "name": "Mac memory",
+   "icon": "memorychip",
+   "group": "mac",
+   "source": "mac",
+   "param": "none",
+   "paramTitle": null,
+   "default": null,
+   "w": 2,
+   "h": 2,
+   "interactive": false
+  },
+  {
+   "id": "mac.disk",
+   "name": "Mac disk",
+   "icon": "internaldrive",
+   "group": "mac",
+   "source": "mac",
+   "param": "none",
+   "paramTitle": null,
+   "default": null,
+   "w": 2,
+   "h": 2,
+   "interactive": false
+  },
+  {
+   "id": "mac.network",
+   "name": "Mac network",
+   "icon": "arrow.up.arrow.down",
+   "group": "mac",
+   "source": "mac",
+   "param": "none",
+   "paramTitle": null,
+   "default": null,
+   "w": 3,
+   "h": 2,
+   "interactive": false
+  },
+  {
+   "id": "mac.battery",
+   "name": "Mac battery",
+   "icon": "battery.100",
+   "group": "mac",
+   "source": "mac",
+   "param": "none",
+   "paramTitle": null,
+   "default": null,
+   "w": 2,
+   "h": 2,
+   "interactive": false
+  },
+  {
+   "id": "mac.playing",
+   "name": "Now playing",
+   "icon": "music.note",
+   "group": "mac",
+   "source": "mac",
+   "param": "none",
+   "paramTitle": null,
+   "default": null,
+   "w": 3,
+   "h": 2,
+   "interactive": false
+  },
+  {
+   "id": "mac.badges",
+   "name": "App badges",
+   "icon": "app.badge",
+   "group": "mac",
+   "source": "mac",
+   "param": "none",
+   "paramTitle": null,
+   "default": null,
+   "w": 3,
+   "h": 2,
+   "interactive": false
+  },
+  {
+   "id": "mac.front",
+   "name": "Front app",
+   "icon": "macwindow",
+   "group": "mac",
+   "source": "mac",
+   "param": "none",
+   "paramTitle": null,
+   "default": null,
+   "w": 2,
+   "h": 2,
+   "interactive": false
+  },
+  {
+   "id": "mac.command",
+   "name": "Command output",
+   "icon": "terminal",
+   "group": "mac",
+   "source": "mac",
+   "param": "command",
+   "paramTitle": "Command name (from the Mac's config)",
+   "default": "prs",
+   "w": 3,
+   "h": 2,
+   "interactive": false
+  },
+  {
+   "id": "fx",
+   "name": "Currency",
+   "icon": "dollarsign.arrow.circlepath",
+   "group": "market",
+   "source": "web",
+   "param": "pair",
+   "paramTitle": "Currency pair (USD/TRY)",
+   "default": "USD/TRY",
+   "w": 2,
+   "h": 2,
+   "interactive": false
+  },
+  {
+   "id": "crypto",
+   "name": "Crypto",
+   "icon": "bitcoinsign.circle",
+   "group": "market",
+   "source": "web",
+   "param": "coin",
+   "paramTitle": "Coin (bitcoin, ethereum…)",
+   "default": "bitcoin",
+   "w": 2,
+   "h": 2,
+   "interactive": false
+  },
+  {
+   "id": "sports.team",
+   "name": "Team card",
+   "icon": "shield.lefthalf.filled",
+   "group": "sports",
+   "source": "web",
+   "param": "team",
+   "paramTitle": "Team",
+   "default": "133804",
+   "w": 4,
+   "h": 3,
+   "interactive": false
+  },
+  {
+   "id": "sports.next",
+   "name": "Next match",
+   "icon": "calendar.badge.clock",
+   "group": "sports",
+   "source": "web",
+   "param": "team",
+   "paramTitle": "Team",
+   "default": "133804",
+   "w": 4,
+   "h": 2,
+   "interactive": false
+  },
+  {
+   "id": "sports.last",
+   "name": "Last result",
+   "icon": "sportscourt",
+   "group": "sports",
+   "source": "web",
+   "param": "team",
+   "paramTitle": "Team",
+   "default": "133804",
+   "w": 4,
+   "h": 2,
+   "interactive": false
+  },
+  {
+   "id": "sports.table",
+   "name": "League table",
+   "icon": "list.number",
+   "group": "sports",
+   "source": "web",
+   "param": "league",
+   "paramTitle": "League",
+   "default": "4339",
+   "w": 3,
+   "h": 4,
+   "interactive": false
+  },
+  {
+   "id": "sports.player",
+   "name": "Player card",
+   "icon": "person.crop.rectangle",
+   "group": "sports",
+   "source": "web",
+   "param": "player",
+   "paramTitle": "Player",
+   "default": "34172022",
+   "w": 3,
+   "h": 3,
+   "interactive": false
+  },
+  {
+   "id": "f1.race",
+   "name": "F1 next race",
+   "icon": "flag.checkered",
+   "group": "sports",
+   "source": "web",
+   "param": "none",
+   "paramTitle": null,
+   "default": null,
+   "w": 4,
+   "h": 3,
+   "interactive": false
+  },
+  {
+   "id": "f1.drivers",
+   "name": "F1 drivers",
+   "icon": "list.number",
+   "group": "sports",
+   "source": "web",
+   "param": "none",
+   "paramTitle": null,
+   "default": null,
+   "w": 3,
+   "h": 4,
+   "interactive": false
+  },
+  {
+   "id": "f1.teams",
+   "name": "F1 constructors",
+   "icon": "car.fill",
+   "group": "sports",
+   "source": "web",
+   "param": "none",
+   "paramTitle": null,
+   "default": null,
+   "w": 3,
+   "h": 4,
+   "interactive": false
+  },
+  {
+   "id": "f1.driver",
+   "name": "F1 driver card",
+   "icon": "steeringwheel",
+   "group": "sports",
+   "source": "web",
+   "param": "f1Driver",
+   "paramTitle": "Driver",
+   "default": "hamilton",
+   "w": 3,
+   "h": 3,
+   "interactive": false
+  },
+  {
+   "id": "f1.team",
+   "name": "F1 team card",
+   "icon": "car.side",
+   "group": "sports",
+   "source": "web",
+   "param": "f1Team",
+   "paramTitle": "Team",
+   "default": "ferrari",
+   "w": 3,
+   "h": 3,
+   "interactive": false
+  },
+  {
+   "id": "stats.today",
+   "name": "Today",
+   "icon": "hourglass",
+   "group": "stats",
+   "source": "local",
+   "param": "none",
+   "paramTitle": null,
+   "default": null,
+   "w": 3,
+   "h": 2,
+   "interactive": false
+  },
+  {
+   "id": "stats.week",
+   "name": "Screen time chart",
+   "icon": "chart.bar.fill",
+   "group": "stats",
+   "source": "local",
+   "param": "none",
+   "paramTitle": null,
+   "default": null,
+   "w": 4,
+   "h": 3,
+   "interactive": false
+  },
+  {
+   "id": "stats.top",
+   "name": "Most used",
+   "icon": "chart.pie.fill",
+   "group": "stats",
+   "source": "local",
+   "param": "stat",
+   "paramTitle": "Show",
+   "default": "layouts",
+   "w": 4,
+   "h": 3,
+   "interactive": false
+  },
+  {
+   "id": "stats.hours",
+   "name": "Time of day",
+   "icon": "sun.horizon",
+   "group": "stats",
+   "source": "local",
+   "param": "none",
+   "paramTitle": null,
+   "default": null,
+   "w": 4,
+   "h": 2,
+   "interactive": false
+  },
+  {
+   "id": "stats.keys",
+   "name": "Most pressed keys",
+   "icon": "hand.tap",
+   "group": "stats",
+   "source": "local",
+   "param": "none",
+   "paramTitle": null,
+   "default": null,
+   "w": 3,
+   "h": 3,
+   "interactive": false
+  },
+  {
+   "id": "stats.board",
+   "name": "Stats dashboard",
+   "icon": "square.grid.2x2",
+   "group": "stats",
+   "source": "local",
+   "param": "none",
+   "paramTitle": null,
+   "default": null,
+   "w": 6,
+   "h": 4,
+   "interactive": false
+  },
+  {
+   "id": "status.services",
+   "name": "Service status",
+   "icon": "checkmark.seal",
+   "group": "status",
+   "source": "web",
+   "param": "services",
+   "paramTitle": "Services",
+   "default": "github,cloudflare,claude,openai",
+   "w": 4,
+   "h": 3,
+   "interactive": false
+  },
+  {
+   "id": "status.site",
+   "name": "Site monitor",
+   "icon": "waveform.path.ecg",
+   "group": "status",
+   "source": "web",
+   "param": "url",
+   "paramTitle": "Web address (https://…)",
+   "default": "https://www.apple.com",
+   "w": 3,
+   "h": 2,
+   "interactive": false
+  }
+ ],
+ "paletteRoles": [
+  {
+   "role": "background",
+   "note": "pad surface"
+  },
+  {
+   "role": "key",
+   "note": "normal keycap"
+  },
+  {
+   "role": "accent",
+   "note": "highlighted keys (primary brand color)"
+  },
+  {
+   "role": "accent2",
+   "note": "secondary highlight"
+  },
+  {
+   "role": "danger",
+   "note": "destructive keys (delete, leave call…)"
+  },
+  {
+   "role": "surface",
+   "note": "trackpad / pencil / meter wells"
+  },
+  {
+   "role": "legend",
+   "note": "text + icon on normal keys"
+  },
+  {
+   "role": "legendOnAccent",
+   "note": "text + icon on accent keys"
+  },
+  {
+   "role": "border",
+   "note": "keycap rim"
+  },
+  {
+   "role": "glow",
+   "note": "LED ring / halo color"
+  }
+ ],
+ "themeEnums": {
+  "KeycapStyle": [
+   "flat: modern flat tiles (iOS / Nothing)",
+   "chiclet: Apple low-profile: thin gap, hairline rim, soft shadow",
+   "mechanical: tall cap with side walls, visible travel on press",
+   "retro: beige sculpted 80s cap, thick bezel, dark inset legend",
+   "typewriter: round key, chrome ring, drop shadow, paper background",
+   "glass: translucent, blurred, neon rim glow (hologram)",
+   "rubber: ZX Spectrum: matte soft pill",
+   "sculpted: real hardware: side walls, dished top, knurled knobs, mixer faders",
+   "dome: round plastic cap on a stem (Lofree, retro dot keyboards)",
+   "ringed: typewriter key: metal ring around an inset face",
+   "lcd: display key: a little screen under a clear cap (stream decks)",
+   "crystal: clear cap lit from below",
+   "dish: low slab with a round finger dish (MX Keys)"
+  ],
+  "LegendFont": [
+   "system",
+   "rounded",
+   "mono",
+   "serif"
+  ],
+  "PressEffect": [
+   "none",
+   "depress",
+   "glow",
+   "ripple",
+   "bounce"
+  ],
+  "ClickSound": [
+   "none",
+   "tick",
+   "click",
+   "clack",
+   "typewriter"
+  ],
+  "Tint": [
+   "key",
+   "accent",
+   "accent2",
+   "danger",
+   "surface"
+  ],
+  "LegendAlign": [
+   "center",
+   "topLeft"
+  ],
+  "KnobStyle": [
+   "knurled: machined metal, ridged skirt",
+   "matte: smooth dial with a finger dimple (jog wheels, creative dials)",
+   "pointer: chicken-head selector with a marker line"
+  ],
+  "CapMaterial": [
+   "plastic: smooth moulded caps",
+   "wood: grain lines, every key cut from a slightly different piece",
+   "stone: rough-hewn: mottled, with cracks",
+   "marble: polished, veined",
+   "brick: courses of brick in mortar",
+   "metal: brushed, with a hard highlight"
+  ]
+ },
+ "themes": [
+  {
+   "id": "twilight-75",
+   "name": "Twilight 75%",
+   "family": "Iconic Hardware"
+  },
+  {
+   "id": "round-dots-orange",
+   "name": "Round Dots Orange",
+   "family": "Iconic Hardware"
+  },
+  {
+   "id": "crystal-ice",
+   "name": "Crystal Ice",
+   "family": "Iconic Hardware"
+  },
+  {
+   "id": "crystal-pink",
+   "name": "Crystal Pink ARGB",
+   "family": "Iconic Hardware"
+  },
+  {
+   "id": "burgundy-gold",
+   "name": "Burgundy & Gold",
+   "family": "Iconic Hardware"
+  },
+  {
+   "id": "steampunk-typewriter",
+   "name": "Steampunk Typewriter",
+   "family": "Iconic Hardware"
+  },
+  {
+   "id": "classic-beige-cyl",
+   "name": "Classic Beige",
+   "family": "Iconic Hardware"
+  },
+  {
+   "id": "mx-keys-mini-mac",
+   "name": "MX Keys Mini for Mac",
+   "family": "Iconic Hardware"
+  },
+  {
+   "id": "huntsman-rgb",
+   "name": "Huntsman RGB",
+   "family": "Iconic Hardware"
+  },
+  {
+   "id": "retro-n-edition",
+   "name": "Retro N Edition",
+   "family": "Iconic Hardware"
+  },
+  {
+   "id": "pop-lime",
+   "name": "POP Lime",
+   "family": "Iconic Hardware"
+  },
+  {
+   "id": "q1-shell-white",
+   "name": "Q1 Shell White",
+   "family": "Iconic Hardware"
+  },
+  {
+   "id": "retro-classic-leather",
+   "name": "Retro Classic Leather",
+   "family": "Iconic Hardware"
+  },
+  {
+   "id": "seventies-olive",
+   "name": "1970s Olive",
+   "family": "Iconic Hardware"
+  },
+  {
+   "id": "magic-keyboard-silver",
+   "name": "Magic Keyboard Silver",
+   "family": "Iconic Hardware"
+  },
+  {
+   "id": "qwerkywriter",
+   "name": "Typewriter Noir",
+   "family": "Iconic Hardware"
+  },
+  {
+   "id": "slim-solar-graphite",
+   "name": "Slim Solar Graphite",
+   "family": "Iconic Hardware"
+  },
+  {
+   "id": "q-navy",
+   "name": "Q Navy",
+   "family": "Iconic Hardware"
+  },
+  {
+   "id": "g-blue",
+   "name": "G Pro Blue",
+   "family": "Iconic Hardware"
+  },
+  {
+   "id": "graphite-studio",
+   "name": "Graphite Studio",
+   "family": "Control Surfaces"
+  },
+  {
+   "id": "speed-editor",
+   "name": "Speed Editor",
+   "family": "Control Surfaces"
+  },
+  {
+   "id": "creative-console",
+   "name": "Creative Console",
+   "family": "Control Surfaces"
+  },
+  {
+   "id": "lcd-deck",
+   "name": "LCD Deck",
+   "family": "Control Surfaces"
+  },
+  {
+   "id": "grading-panel",
+   "name": "Grading Panel",
+   "family": "Control Surfaces"
+  },
+  {
+   "id": "mini-keydial",
+   "name": "Mini Keydial",
+   "family": "Control Surfaces"
+  },
+  {
+   "id": "vintage-sampler",
+   "name": "Vintage Sampler",
+   "family": "Control Surfaces"
+  },
+  {
+   "id": "mini-keys-25",
+   "name": "Mini Keys 25",
+   "family": "Control Surfaces"
+  },
+  {
+   "id": "walnut",
+   "name": "Walnut",
+   "family": "Nature"
+  },
+  {
+   "id": "forest-moss",
+   "name": "Forest Moss",
+   "family": "Nature"
+  },
+  {
+   "id": "mountain-stone",
+   "name": "Mountain Stone",
+   "family": "Nature"
+  },
+  {
+   "id": "deep-sea",
+   "name": "Deep Sea",
+   "family": "Nature"
+  },
+  {
+   "id": "carrara-marble",
+   "name": "Carrara Marble",
+   "family": "Nature"
+  },
+  {
+   "id": "red-brick",
+   "name": "Red Brick",
+   "family": "Nature"
+  },
+  {
+   "id": "cyberpunk-night-city",
+   "name": "Cyberpunk Night City",
+   "family": "Cult Games"
+  },
+  {
+   "id": "warcraft-azeroth",
+   "name": "Warcraft Azeroth",
+   "family": "Cult Games"
+  },
+  {
+   "id": "starcraft-terran",
+   "name": "StarCraft Terran",
+   "family": "Cult Games"
+  },
+  {
+   "id": "diablo-sanctuary",
+   "name": "Diablo Sanctuary",
+   "family": "Cult Games"
+  },
+  {
+   "id": "prince-of-persia",
+   "name": "Prince of Persia",
+   "family": "Cult Games"
+  },
+  {
+   "id": "mortal-kombat",
+   "name": "Mortal Kombat",
+   "family": "Cult Games"
+  },
+  {
+   "id": "need-for-speed",
+   "name": "Need for Speed",
+   "family": "Cult Games"
+  },
+  {
+   "id": "gta-vice",
+   "name": "GTA Vice",
+   "family": "Cult Games"
+  },
+  {
+   "id": "god-of-war",
+   "name": "God of War",
+   "family": "Cult Games"
+  },
+  {
+   "id": "ottoman-court",
+   "name": "Osmanlı Sarayı",
+   "family": "Türkiye"
+  },
+  {
+   "id": "iznik-cini",
+   "name": "İznik Çini",
+   "family": "Türkiye"
+  },
+  {
+   "id": "galata-tower",
+   "name": "Galata Kulesi",
+   "family": "Türkiye"
+  },
+  {
+   "id": "ay-yildiz",
+   "name": "Ay Yıldız",
+   "family": "Türkiye"
+  },
+  {
+   "id": "kapadokya",
+   "name": "Kapadokya",
+   "family": "Türkiye"
+  },
+  {
+   "id": "pamukkale",
+   "name": "Pamukkale",
+   "family": "Türkiye"
+  },
+  {
+   "id": "efes",
+   "name": "Efes",
+   "family": "Türkiye"
+  },
+  {
+   "id": "ayasofya",
+   "name": "Ayasofya",
+   "family": "Türkiye"
+  },
+  {
+   "id": "kiz-kulesi",
+   "name": "Kız Kulesi",
+   "family": "Türkiye"
+  },
+  {
+   "id": "turk-kahvesi",
+   "name": "Türk Kahvesi",
+   "family": "Türkiye"
+  },
+  {
+   "id": "anadolu-kilimi",
+   "name": "Anadolu Kilimi",
+   "family": "Türkiye"
+  },
+  {
+   "id": "turkiye-turu",
+   "name": "Türkiye Turu",
+   "family": "Türkiye"
+  },
+  {
+   "id": "classic-dark",
+   "name": "Classic Dark",
+   "family": "Palettes"
+  },
+  {
+   "id": "apple-ii",
+   "name": "Apple II",
+   "family": "Apple"
+  },
+  {
+   "id": "macintosh-128k",
+   "name": "Macintosh 128K",
+   "family": "Apple"
+  },
+  {
+   "id": "apple-extended-ii",
+   "name": "Apple Extended Keyboard II",
+   "family": "Apple"
+  },
+  {
+   "id": "imac-g3-bondi",
+   "name": "iMac G3 Bondi Blue",
+   "family": "Apple"
+  },
+  {
+   "id": "apple-pro-keyboard",
+   "name": "Apple Pro Keyboard",
+   "family": "Apple"
+  },
+  {
+   "id": "powerbook-g4-titanium",
+   "name": "PowerBook G4 Titanium",
+   "family": "Apple"
+  },
+  {
+   "id": "aluminum-2007",
+   "name": "Aluminum Keyboard (2007)",
+   "family": "Apple"
+  },
+  {
+   "id": "macbook-pro-space-gray",
+   "name": "MacBook Pro Space Gray",
+   "family": "Apple"
+  },
+  {
+   "id": "magic-keyboard-touch-id",
+   "name": "Magic Keyboard with Touch ID",
+   "family": "Apple"
+  },
+  {
+   "id": "imac-m1",
+   "name": "iMac (M1) Colours",
+   "family": "Apple"
+  },
+  {
+   "id": "m3-space-black",
+   "name": "MacBook Pro Space Black",
+   "family": "Apple"
+  },
+  {
+   "id": "mx-keys",
+   "name": "Logitech MX Keys",
+   "family": "Logitech"
+  },
+  {
+   "id": "mx-mechanical",
+   "name": "Logitech MX Mechanical",
+   "family": "Logitech"
+  },
+  {
+   "id": "g915",
+   "name": "Logitech G915 LIGHTSPEED",
+   "family": "Logitech"
+  },
+  {
+   "id": "atari-800",
+   "name": "Atari 400/800",
+   "family": "Retro"
+  },
+  {
+   "id": "commodore-64",
+   "name": "Commodore 64",
+   "family": "Retro"
+  },
+  {
+   "id": "amiga-500",
+   "name": "Amiga 500",
+   "family": "Retro"
+  },
+  {
+   "id": "zx-spectrum",
+   "name": "ZX Spectrum",
+   "family": "Retro"
+  },
+  {
+   "id": "ibm-model-m",
+   "name": "IBM Model M",
+   "family": "Retro"
+  },
+  {
+   "id": "ibm-pc-5150",
+   "name": "IBM PC 5150",
+   "family": "Retro"
+  },
+  {
+   "id": "ti-99-4a",
+   "name": "TI-99/4A",
+   "family": "Retro"
+  },
+  {
+   "id": "msx",
+   "name": "MSX",
+   "family": "Retro"
+  },
+  {
+   "id": "game-boy-dmg",
+   "name": "Game Boy DMG-01",
+   "family": "Retro"
+  },
+  {
+   "id": "hhkb",
+   "name": "HHKB Professional",
+   "family": "Mechanical"
+  },
+  {
+   "id": "keychron-k2",
+   "name": "Keychron K2",
+   "family": "Mechanical"
+  },
+  {
+   "id": "das-keyboard",
+   "name": "Das Keyboard",
+   "family": "Mechanical"
+  },
+  {
+   "id": "razer-blackwidow",
+   "name": "Razer BlackWidow",
+   "family": "Mechanical"
+  },
+  {
+   "id": "corsair-k70",
+   "name": "Corsair K70 RGB",
+   "family": "Mechanical"
+  },
+  {
+   "id": "gmk-olivia",
+   "name": "GMK Olivia",
+   "family": "Mechanical"
+  },
+  {
+   "id": "gmk-laser",
+   "name": "GMK Laser",
+   "family": "Mechanical"
+  },
+  {
+   "id": "cherry-mxboard",
+   "name": "Cherry MX Board",
+   "family": "Mechanical"
+  },
+  {
+   "id": "underwood-5",
+   "name": "Underwood No. 5",
+   "family": "Typewriter"
+  },
+  {
+   "id": "olivetti-valentine",
+   "name": "Olivetti Valentine",
+   "family": "Typewriter"
+  },
+  {
+   "id": "hologram",
+   "name": "Hologram",
+   "family": "Futuristic"
+  },
+  {
+   "id": "tron",
+   "name": "Tron Grid",
+   "family": "Futuristic"
+  },
+  {
+   "id": "synthwave",
+   "name": "Synthwave",
+   "family": "Futuristic"
+  },
+  {
+   "id": "nothing",
+   "name": "Nothing",
+   "family": "Futuristic"
+  },
+  {
+   "id": "steampunk",
+   "name": "Steampunk",
+   "family": "Futuristic"
+  },
+  {
+   "id": "dracula",
+   "name": "Dracula",
+   "family": "Palettes"
+  },
+  {
+   "id": "nord",
+   "name": "Nord",
+   "family": "Palettes"
+  },
+  {
+   "id": "solarized-dark",
+   "name": "Solarized Dark",
+   "family": "Palettes"
+  },
+  {
+   "id": "solarized-light",
+   "name": "Solarized Light",
+   "family": "Palettes"
+  },
+  {
+   "id": "e-ink",
+   "name": "E-Ink",
+   "family": "Palettes"
+  }
+ ],
+ "capabilities": [
+  {
+   "id": "keys",
+   "title": "Press keys, menu items and media controls"
+  },
+  {
+   "id": "typeText",
+   "title": "Type text it brings"
+  },
+  {
+   "id": "openLinks",
+   "title": "Open web and app links"
+  },
+  {
+   "id": "shortcuts",
+   "title": "Run your Shortcuts by name"
+  },
+  {
+   "id": "network",
+   "title": "Call the servers it names"
+  },
+  {
+   "id": "clipboard",
+   "title": "Send your clipboard to those servers"
+  },
+  {
+   "id": "typeAnswers",
+   "title": "Type a server's answer into the app in front"
+  },
+  {
+   "id": "saveFiles",
+   "title": "Save a server's answer to Downloads"
+  },
+  {
+   "id": "triggers",
+   "title": "React to gestures and MIDI keys on the Mac"
+  },
+  {
+   "id": "html",
+   "title": "Show its own HTML (static: no script, no network)"
+  },
+  {
+   "id": "liveData",
+   "title": "Show data it fetches, refreshed while on screen"
+  }
+ ],
+ "integrationKinds": [
+  "rest",
+  "websocket",
+  "mcp",
+  "grpc"
+ ],
+ "integrationOutputs": [
+  "none",
+  "copy",
+  "type",
+  "open",
+  "save"
+ ],
+ "fileTypes": [
+  "png",
+  "jpg",
+  "jpeg",
+  "webp",
+  "gif",
+  "mp4",
+  "mov",
+  "mp3",
+  "wav",
+  "pdf",
+  "txt",
+  "md",
+  "json"
+ ],
+ "keys": [
+  "a",
+  "s",
+  "d",
+  "f",
+  "h",
+  "g",
+  "z",
+  "x",
+  "c",
+  "v",
+  "b",
+  "q",
+  "w",
+  "e",
+  "r",
+  "y",
+  "t",
+  "o",
+  "u",
+  "i",
+  "p",
+  "l",
+  "j",
+  "k",
+  "n",
+  "m",
+  "1",
+  "2",
+  "3",
+  "4",
+  "5",
+  "6",
+  "7",
+  "8",
+  "9",
+  "0",
+  "=",
+  "-",
+  "]",
+  "[",
+  "'",
+  ";",
+  "\\",
+  ",",
+  "/",
+  ".",
+  "`",
+  "return",
+  "enter",
+  "tab",
+  "space",
+  "delete",
+  "backspace",
+  "escape",
+  "esc",
+  "forwarddelete",
+  "home",
+  "end",
+  "pageup",
+  "pagedown",
+  "left",
+  "right",
+  "down",
+  "up",
+  "kp0",
+  "kp1",
+  "kp2",
+  "kp3",
+  "kp4",
+  "kp5",
+  "kp6",
+  "kp7",
+  "kp8",
+  "kp9",
+  "kp.",
+  "kp+",
+  "kp-",
+  "kpenter",
+  "f1",
+  "f2",
+  "f3",
+  "f4",
+  "f5",
+  "f6",
+  "f7",
+  "f8",
+  "f9",
+  "f10",
+  "f11",
+  "f12",
+  "f13",
+  "f14",
+  "f15",
+  "f16",
+  "f17",
+  "f18",
+  "f19",
+  "f20"
+ ],
+ "gestures": [
+  "swipe3Up",
+  "swipe3Down",
+  "swipe3Left",
+  "swipe3Right",
+  "pinchOut",
+  "pinchIn"
+ ],
+ "actions": {
+  "MacroAction": [
+   {
+    "name": "keyChord",
+    "params": [
+     {
+      "label": "_0",
+      "type": "KeyChord"
+     }
+    ],
+    "doc": "A key + modifiers, e.g. ⌘/ for \"toggle comment\"."
+   },
+   {
+    "name": "typeText",
+    "params": [
+     {
+      "label": "_0",
+      "type": "String"
+     }
+    ],
+    "doc": "Type a literal string (passwords, snippets, \"One key = Q-W-E\")."
+   },
+   {
+    "name": "runShortcut",
+    "params": [
+     {
+      "label": "_0",
+      "type": "String"
+     }
+    ],
+    "doc": "Run a macOS Shortcut by name via `shortcuts run`."
+   },
+   {
+    "name": "openApp",
+    "params": [
+     {
+      "label": "bundleID",
+      "type": "String"
+     }
+    ],
+    "doc": "Bring an app to the front (bundle id)."
+   },
+   {
+    "name": "openURL",
+    "params": [
+     {
+      "label": "_0",
+      "type": "String"
+     }
+    ],
+    "doc": "Open a URL / file with the default handler."
+   },
+   {
+    "name": "setVolume",
+    "params": [
+     {
+      "label": "_0",
+      "type": "Int"
+     }
+    ],
+    "doc": "Set absolute output volume 0...100."
+   },
+   {
+    "name": "mediaKey",
+    "params": [
+     {
+      "label": "_0",
+      "type": "MediaKey"
+     }
+    ],
+    "doc": "Media/system key (see ceiling note in KeyInjector)."
+   },
+   {
+    "name": "scrollBy",
+    "params": [
+     {
+      "label": "dx",
+      "type": "Double"
+     },
+     {
+      "label": "dy",
+      "type": "Double"
+     }
+    ],
+    "doc": "Scroll the Mac by a wheel notch — knobs bind to this."
+   },
+   {
+    "name": "sequence",
+    "params": [
+     {
+      "label": "_0",
+      "type": "[MacroAction]"
+     }
+    ],
+    "doc": "Fire several actions in order — macros \"used in tandem\"."
+   },
+   {
+    "name": "performIn",
+    "params": [
+     {
+      "label": "bundleID",
+      "type": "String"
+     },
+     {
+      "label": "action",
+      "type": "MacroAction"
+     }
+    ],
+    "doc": "Bring a Mac app to the front, then perform `action` in it — lets the iPad drive an app that isn't frontmost (manual target mode)."
+   },
+   {
+    "name": "obs",
+    "params": [
+     {
+      "label": "_0",
+      "type": "OBSCommand"
+     }
+    ],
+    "doc": "OBS Studio via obs-websocket (daemon-side). Real state comes back as ServerMessage.obs."
+   },
+   {
+    "name": "photoshop",
+    "params": [
+     {
+      "label": "_0",
+      "type": "PhotoshopCommand"
+     }
+    ],
+    "doc": "Adobe Photoshop via AppleScript `do javascript` (daemon-side)."
+   },
+   {
+    "name": "teams",
+    "params": [
+     {
+      "label": "_0",
+      "type": "TeamsCommand"
+     }
+    ],
+    "doc": "Microsoft Teams meeting controls (chords + AX scripting, daemon-side)."
+   },
+   {
+    "name": "menu",
+    "params": [
+     {
+      "label": "bundleID",
+      "type": "String?"
+     },
+     {
+      "label": "path",
+      "type": "[String]"
+     }
+    ],
+    "doc": "Press a menu item by its titles, e.g. [\"Window\", \"Zoom\"]; works for items with no shortcut. A component like \"#3\" picks the third item of that menu. `bundleID` nil = the frontmost app."
+   },
+   {
+    "name": "midi",
+    "params": [
+     {
+      "label": "_0",
+      "type": "MIDICommand"
+     }
+    ],
+    "doc": "Send a MIDI message from the Mac's \"iMacroPad\" virtual source (daemon-side) — the pad as a control surface."
+   },
+   {
+    "name": "integration",
+    "params": [
+     {
+      "label": "plugin",
+      "type": "String"
+     },
+     {
+      "label": "name",
+      "type": "String"
+     }
+    ],
+    "doc": "A call an installed plugin defines (REST, WebSocket, MCP, gRPC), made by the Mac. The key only names it."
+   },
+   {
+    "name": "wait",
+    "params": [
+     {
+      "label": "seconds",
+      "type": "Double"
+     }
+    ],
+    "doc": "Pause for a while before the next step."
+   },
+   {
+    "name": "click",
+    "params": [
+     {
+      "label": "x",
+      "type": "Double"
+     },
+     {
+      "label": "y",
+      "type": "Double"
+     },
+     {
+      "label": "button",
+      "type": "Int"
+     }
+    ],
+    "doc": "Click at a point on the Mac's screen (global coordinates, top-left origin). `button` 0 = left, 1 = right."
+   },
+   {
+    "name": "clickElement",
+    "params": [
+     {
+      "label": "bundleID",
+      "type": "String?"
+     },
+     {
+      "label": "title",
+      "type": "String"
+     }
+    ],
+    "doc": "Press a button, checkbox or other control by its title or description in the app's windows (nil = front app)."
+   },
+   {
+    "name": "waitFor",
+    "params": [
+     {
+      "label": "_0",
+      "type": "MacroCondition"
+     },
+     {
+      "label": "timeout",
+      "type": "Double"
+     }
+    ],
+    "doc": "Hold the macro until the condition holds, or fail after `timeout` seconds."
+   },
+   {
+    "name": "when",
+    "params": [
+     {
+      "label": "_0",
+      "type": "MacroCondition"
+     },
+     {
+      "label": "then",
+      "type": "MacroAction"
+     },
+     {
+      "label": "otherwise",
+      "type": "MacroAction?"
+     }
+    ],
+    "doc": "Do `then` when the condition holds right now, else `otherwise` (nil = nothing)."
+   },
+   {
+    "name": "loop",
+    "params": [
+     {
+      "label": "times",
+      "type": "Int"
+     },
+     {
+      "label": "action",
+      "type": "MacroAction"
+     }
+    ],
+    "doc": "Do `action` `times` times."
+   },
+   {
+    "name": "setClipboard",
+    "params": [
+     {
+      "label": "_0",
+      "type": "String"
+     }
+    ],
+    "doc": "Put text on the Mac's clipboard."
+   },
+   {
+    "name": "appleScript",
+    "params": [
+     {
+      "label": "_0",
+      "type": "String"
+     }
+    ],
+    "doc": "Run AppleScript or a shell command on the Mac — only when the Mac allows scripts (menu bar ▸ Allow Scripts)."
+   },
+   {
+    "name": "shell",
+    "params": [
+     {
+      "label": "_0",
+      "type": "String"
+     }
+    ]
+   },
+   {
+    "name": "quitApp",
+    "params": [
+     {
+      "label": "bundleID",
+      "type": "String"
+     }
+    ],
+    "doc": "Quit a Mac app the polite way (it may still ask to save)."
+   },
+   {
+    "name": "macro",
+    "params": [
+     {
+      "label": "_0",
+      "type": "UUID"
+     }
+    ],
+    "doc": "Run a macro of the library by its id."
+   },
+   {
+    "name": "pad",
+    "params": [
+     {
+      "label": "_0",
+      "type": "PadCommand"
+     }
+    ],
+    "doc": "Something the pad itself does: switch layout, start the screensaver."
+   },
+   {
+    "name": "setVariable",
+    "params": [
+     {
+      "label": "name",
+      "type": "String"
+     },
+     {
+      "label": "value",
+      "type": "String"
+     }
+    ],
+    "doc": "Keep a text under a name for later steps: `` in any text is replaced by it (see `MacroText`)."
+   },
+   {
+    "name": "clickText",
+    "params": [
+     {
+      "label": "_0",
+      "type": "String"
+     }
+    ],
+    "doc": "Click words read on the screen, for apps whose controls have no names (Electron, games, remote desktops)."
+   },
+   {
+    "name": "notify",
+    "params": [
+     {
+      "label": "_0",
+      "type": "String"
+     }
+    ],
+    "doc": "A notification on the Mac."
+   },
+   {
+    "name": "stop",
+    "params": [],
+    "doc": "End the macro here, as finished (not as a failure)."
+   }
+  ],
+  "MediaKey": [
+   "playPause",
+   "next",
+   "previous",
+   "volumeUp",
+   "volumeDown",
+   "mute",
+   "brightnessUp",
+   "brightnessDown"
+  ],
+  "Modifier": [
+   "command",
+   "option",
+   "control",
+   "shift",
+   "function"
+  ],
+  "OBSCommand": [
+   {
+    "name": "toggleRecord",
+    "params": []
+   },
+   {
+    "name": "startRecord",
+    "params": []
+   },
+   {
+    "name": "stopRecord",
+    "params": []
+   },
+   {
+    "name": "pauseRecord",
+    "params": []
+   },
+   {
+    "name": "resumeRecord",
+    "params": []
+   },
+   {
+    "name": "toggleStream",
+    "params": []
+   },
+   {
+    "name": "startStream",
+    "params": []
+   },
+   {
+    "name": "stopStream",
+    "params": []
+   },
+   {
+    "name": "setScene",
+    "params": [
+     {
+      "label": "_0",
+      "type": "String"
+     }
+    ]
+   },
+   {
+    "name": "setSourceVisible",
+    "params": [
+     {
+      "label": "scene",
+      "type": "String"
+     },
+     {
+      "label": "source",
+      "type": "String"
+     },
+     {
+      "label": "visible",
+      "type": "Bool"
+     }
+    ]
+   },
+   {
+    "name": "toggleInputMute",
+    "params": [
+     {
+      "label": "_0",
+      "type": "String"
+     }
+    ]
+   },
+   {
+    "name": "setInputVolume",
+    "params": [
+     {
+      "label": "_0",
+      "type": "String"
+     },
+     {
+      "label": "mul",
+      "type": "Double"
+     }
+    ]
+   },
+   {
+    "name": "saveReplayBuffer",
+    "params": []
+   },
+   {
+    "name": "refresh",
+    "params": []
+   }
+  ],
+  "PhotoshopCommand": [
+   {
+    "name": "setForeground",
+    "params": [
+     {
+      "label": "hex",
+      "type": "String"
+     }
+    ]
+   },
+   {
+    "name": "setBackground",
+    "params": [
+     {
+      "label": "hex",
+      "type": "String"
+     }
+    ]
+   },
+   {
+    "name": "swapColors",
+    "params": []
+   },
+   {
+    "name": "setBrush",
+    "params": [
+     {
+      "label": "size",
+      "type": "Double?"
+     },
+     {
+      "label": "hardness",
+      "type": "Double?"
+     },
+     {
+      "label": "opacity",
+      "type": "Double?"
+     }
+    ],
+    "doc": "Any nil component is left unchanged. size in px, hardness/opacity 0…100."
+   },
+   {
+    "name": "selectTool",
+    "params": [
+     {
+      "label": "_0",
+      "type": "String"
+     }
+    ],
+    "doc": "Photoshop tool name as used by `app.currentTool` (\"paintbrushTool\", \"eraserTool\", \"moveTool\"…)."
+   },
+   {
+    "name": "refresh",
+    "params": []
+   }
+  ],
+  "TeamsCommand": [
+   "toggleMic",
+   "toggleCamera",
+   "raiseHand",
+   "toggleBlur",
+   "shareScreen",
+   "openChat",
+   "acceptCall",
+   "declineCall",
+   "leave",
+   "toggleRecording",
+   "toggleTranscript",
+   "toggleCaptions",
+   "statusAvailable",
+   "statusBusy",
+   "statusDoNotDisturb",
+   "statusBeRightBack",
+   "statusAway",
+   "statusOffline"
+  ],
+  "PadCommand": [
+   {
+    "name": "layout",
+    "params": [
+     {
+      "label": "_0",
+      "type": "String"
+     }
+    ],
+    "doc": "Show a layout, found by its name or template id (case and accents ignored)."
+   },
+   {
+    "name": "nextLayout",
+    "params": []
+   },
+   {
+    "name": "previousLayout",
+    "params": []
+   },
+   {
+    "name": "screensaver",
+    "params": [
+     {
+      "label": "_0",
+      "type": "Bool"
+     }
+    ]
+   },
+   {
+    "name": "theme",
+    "params": [
+     {
+      "label": "_0",
+      "type": "String"
+     }
+    ],
+    "doc": "Wear a theme, found by its id or name."
+   }
+  ],
+  "MacroCondition": [
+   {
+    "name": "appFrontmost",
+    "params": [
+     {
+      "label": "_0",
+      "type": "String"
+     }
+    ]
+   },
+   {
+    "name": "appRunning",
+    "params": [
+     {
+      "label": "_0",
+      "type": "String"
+     }
+    ]
+   },
+   {
+    "name": "element",
+    "params": [
+     {
+      "label": "bundleID",
+      "type": "String?"
+     },
+     {
+      "label": "title",
+      "type": "String"
+     }
+    ],
+    "doc": "A button, field or text with this title or description in the app's windows (nil = the front app)."
+   },
+   {
+    "name": "windowTitle",
+    "params": [
+     {
+      "label": "contains",
+      "type": "String"
+     }
+    ],
+    "doc": "The front window's title contains this text."
+   },
+   {
+    "name": "not",
+    "params": [
+     {
+      "label": "_0",
+      "type": "MacroCondition"
+     }
+    ]
+   },
+   {
+    "name": "all",
+    "params": [
+     {
+      "label": "_0",
+      "type": "[MacroCondition]"
+     }
+    ]
+   },
+   {
+    "name": "any",
+    "params": [
+     {
+      "label": "_0",
+      "type": "[MacroCondition]"
+     }
+    ]
+   },
+   {
+    "name": "time",
+    "params": [
+     {
+      "label": "from",
+      "type": "String"
+     },
+     {
+      "label": "to",
+      "type": "String"
+     }
+    ],
+    "doc": "Between two times of day, \"HH:mm\"; 22:00 to 06:00 runs past midnight."
+   },
+   {
+    "name": "weekdays",
+    "params": [
+     {
+      "label": "_0",
+      "type": "[Int]"
+     }
+    ],
+    "doc": "On these days, 1 = Monday … 7 = Sunday."
+   },
+   {
+    "name": "text",
+    "params": [
+     {
+      "label": "_0",
+      "type": "String"
+     },
+     {
+      "label": "_1",
+      "type": "TextTest"
+     },
+     {
+      "label": "_2",
+      "type": "String"
+     }
+    ],
+    "doc": "A text, usually a , compared with another."
+   },
+   {
+    "name": "textOnScreen",
+    "params": [
+     {
+      "label": "_0",
+      "type": "String"
+     }
+    ],
+    "doc": "These words can be read on the screen (text recognition, so it works in apps that name nothing)."
+   }
+  ],
+  "MIDICommand": [
+   {
+    "name": "note",
+    "params": [
+     {
+      "label": "channel",
+      "type": "Int"
+     },
+     {
+      "label": "note",
+      "type": "Int"
+     },
+     {
+      "label": "velocity",
+      "type": "Int"
+     }
+    ],
+    "doc": "Note on, then note off a moment later — what a pad button does."
+   },
+   {
+    "name": "noteOn",
+    "params": [
+     {
+      "label": "channel",
+      "type": "Int"
+     },
+     {
+      "label": "note",
+      "type": "Int"
+     },
+     {
+      "label": "velocity",
+      "type": "Int"
+     }
+    ]
+   },
+   {
+    "name": "noteOff",
+    "params": [
+     {
+      "label": "channel",
+      "type": "Int"
+     },
+     {
+      "label": "note",
+      "type": "Int"
+     }
+    ]
+   },
+   {
+    "name": "cc",
+    "params": [
+     {
+      "label": "channel",
+      "type": "Int"
+     },
+     {
+      "label": "controller",
+      "type": "Int"
+     },
+     {
+      "label": "value",
+      "type": "Int"
+     }
+    ],
+    "doc": "Control change. A slider, knob or wheel bound to this sends its own position as `value`."
+   },
+   {
+    "name": "program",
+    "params": [
+     {
+      "label": "channel",
+      "type": "Int"
+     },
+     {
+      "label": "program",
+      "type": "Int"
+     }
+    ]
+   }
+  ]
+ },
+ "rules": {
+  "safeHTML": [
+   [
+    "<\\s*/?\\s*(script|noscript|template)\\b",
+    "it contains a script"
+   ],
+   [
+    "<\\s*(iframe|frame|frameset|object|embed|applet|portal|webview)\\b",
+    "it embeds another page or program"
+   ],
+   [
+    "<\\s*(form|input|button|textarea|select|option|dialog)\\b",
+    "it has form controls, which could send data"
+   ],
+   [
+    "<\\s*(link|meta|base)\\b",
+    "it has a link, meta or base tag, which can load or redirect"
+   ],
+   [
+    "<\\s*(audio|video|source|track|picture)\\b",
+    "it loads media"
+   ],
+   [
+    "\\bon[a-z]+\\s*=",
+    "it has an event handler (onclick, onerror…)"
+   ],
+   [
+    "(javascript|vbscript|livescript)\\s*:",
+    "it has a script link"
+   ],
+   [
+    "data\\s*:\\s*(?!image/(png|jpeg|jpg|gif|webp)[;,])",
+    "it has a data: link that is not a picture"
+   ],
+   [
+    "\\b(src|srcset|href|action|formaction|poster|background|ping|manifest|xlink:href|data)\\s*=\\s*[\"']?\\s*(?!data:image/|#)[^\"'\\s>]",
+    "it points outside itself (src, href…); only pictures written into the widget (data:image) are allowed"
+   ],
+   [
+    "url\\s*\\(\\s*[\"']?\\s*(?!data:image/)",
+    "its style loads something from outside"
+   ],
+   [
+    "@import|expression\\s*\\(|-moz-binding|behavior\\s*:",
+    "its style can load or run something"
+   ],
+   [
+    "&#x?[0-9a-f]+;?\\s*(&#|[a-z]*:)",
+    "it hides a link behind character codes"
+   ],
+   [
+    "<\\s*svg[^>]*>[\\s\\S]*<\\s*(foreignobject|use|image|animate|set)\\b",
+    "its drawing loads or animates from outside"
+   ]
+  ],
+  "safeHTMLMaxBytes": 200000,
+  "danger": [
+   [
+    "\\|\\s*(sudo\\s+)?(ba|z|da|fi)?sh\\b",
+    "which pipes something into a shell"
+   ],
+   [
+    "\\b(curl|wget)\\b[^\\n]*(\\||>|&&|;)",
+    "which downloads and then runs or writes something"
+   ],
+   [
+    "\\brm\\s+(-[a-z]*\\s+)*-[a-z]*[rf]",
+    "which deletes files"
+   ],
+   [
+    "\\bsudo\\b",
+    "which asks for administrator rights"
+   ],
+   [
+    "\\bbase64\\s+(-d|--decode)",
+    "which unpacks hidden text"
+   ],
+   [
+    "\\b(osascript|launchctl|crontab|csrutil|spctl|diskutil|dscl|mkfs|nvram)\\b",
+    "which changes how the Mac itself runs"
+   ],
+   [
+    "\\bchmod\\s+[+0-9a-z]*x",
+    "which makes a file runnable"
+   ],
+   [
+    "\\bdd\\s+if=",
+    "which overwrites a disk"
+   ],
+   [
+    ":\\(\\)\\s*\\{",
+    "which is a fork bomb"
+   ],
+   [
+    "\\bdefaults\\s+(write|delete)\\b",
+    "which changes app or system settings"
+   ],
+   [
+    "\\bsecurity\\s+(find|dump|export|delete|unlock)",
+    "which reads the keychain"
+   ],
+   [
+    "(\\.ssh/|id_rsa|id_ed25519|\\.aws/credentials|\\.netrc|/etc/passwd|\\.zsh_history|\\.bash_history)",
+    "which touches keys or credentials"
+   ],
+   [
+    ">>?\\s*~?/?[^\\s]*\\.(zshrc|zprofile|bashrc|bash_profile|profile)\\b",
+    "which changes what every new terminal runs"
+   ],
+   [
+    "\\b(nc|ncat|netcat|socat)\\s+-?[a-z]*\\s*\\S+\\s+[0-9]+",
+    "which opens a raw network connection"
+   ],
+   [
+    "\\b(python3?|perl|ruby|node|php)\\s+-[ce]\\b",
+    "which runs code written into the key"
+   ],
+   [
+    "\\beval\\b|\\$\\(\\s*(curl|wget)",
+    "which runs text as code"
+   ],
+   [
+    "/dev/tcp/",
+    "which opens a raw network connection"
+   ],
+   [
+    "\\bkillall\\s+-9|\\bkill\\s+-9\\s+-1",
+    "which kills running programs"
+   ],
+   [
+    "ignore (all |any |the )?(previous|prior|above|earlier|system) (instructions|rules|prompts?)|(önceki|yukarıdaki|sistem) (talimat|komut|kural)[a-zçğıöşü]* (yoksay|unut|görmezden)",
+    "which tells an assistant to drop its instructions"
+   ],
+   [
+    "\\b(delete|erase|wipe|destroy|shred|format) (all |every |the entire |the whole |my |the user'?s )[a-z ]{0,30}(files?|data|disks?|drives?|databases?|e-?mails?|repos?|repositor|folders?|director|backups?|history)",
+    "which asks for files or data to be destroyed"
+   ],
+   [
+    "(tüm|bütün|her) ?[a-zçğıöşü ]{0,24}(dosya|veri|disk|e-?posta|yedek|klasör|depo)[a-zçğıöşü]* ?(sil|yok et|temizle|formatla|kaldır)",
+    "which asks for files or data to be destroyed"
+   ],
+   [
+    "\\b(exfiltrat|siphon off|sızdır|ele geçir)",
+    "which asks for data to be taken out"
+   ],
+   [
+    "\\b(send|upload|post|e-?mail|forward|share|paste|leak)\\b[^.\\n]{0,60}(passwords?|credentials?|api[ _-]?keys?|tokens?|secrets?|private keys?|ssh keys?|keychain|cookies|\\.env\\b|browser history)",
+    "which asks for passwords, keys or tokens to be sent somewhere"
+   ],
+   [
+    "(şifre|parola|kimlik bilgi|anahtar|token|gizli bilgi|çerez)[a-zçğıöşü ]{0,40}(gönder|yükle|paylaş|ilet|sızdır)",
+    "which asks for passwords, keys or tokens to be sent somewhere"
+   ],
+   [
+    "\\b(disable|turn off|bypass)\\b[a-z ]{0,20}(firewall|gatekeeper|system integrity|antivirus|security|safety|sandbox|permissions?|approval)|(güvenlik duvarı|güvenliğ|antivirüs|korumay)[a-zçğıöşü ]{0,20}(kapat|devre dışı|atla)",
+    "which asks for a protection to be switched off"
+   ],
+   [
+    "--dangerously-skip-permissions|--yolo\\b|--no-verify\\b|without (asking|confirmation|approval|permission)|(onay|izin)[a-zçğıöşü ]{0,12}(almadan|istemeden|sormadan)",
+    "which asks for something to be done without your approval"
+   ]
+  ]
+ }
+}

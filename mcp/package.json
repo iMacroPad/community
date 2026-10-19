@@ -1,0 +1,41 @@
+{
+  "name": "@imacropad/mcp",
+  "version": "0.1.0",
+  "description": "MCP server for making iMacroPad community content: the plugin format, scaffolds for plugins, themes and layouts, and the validator.",
+  "type": "module",
+  "bin": {
+    "imacropad-mcp": "src/index.js"
+  },
+  "main": "src/index.js",
+  "files": [
+    "src",
+    "data",
+    "README.md"
+  ],
+  "scripts": {
+    "start": "node src/index.js",
+    "gen": "node scripts/gen-catalog.mjs",
+    "smoke": "node scripts/smoke.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "keywords": [
+    "mcp",
+    "imacropad",
+    "macro pad",
+    "ipad",
+    "plugin"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iMacroPad/community.git",
+    "directory": "mcp"
+  },
+  "homepage": "https://www.imacropad.app/community/",
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.32.1",
+    "zod": "^4.6.7"
+  }
+}

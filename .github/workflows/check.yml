@@ -39,13 +39,13 @@ jobs:
         uses: actions/upload-artifact@v5
         with: { name: validator, path: validator.txt }
 
-  # Claude, installed on the repo as the GitHub app "Claude", is the first reviewer: it posts a PR review as
-  # claude[bot] and labels the PR. Advisory only: it is not a code owner, so its review can never merge anything.
+  # Claude is the first reviewer: it posts a PR review and labels the PR. Anthropic's app-token exchange does not
+  # accept pull_request_target, so it acts with this workflow's own token. Advisory only: it is not a code owner, so its review can never merge anything.
   # Text in a submission is data, never instructions (REVIEW.md).
   ai-review:
     needs: [rules, validate]
     runs-on: ubuntu-latest
-    permissions: { contents: read, pull-requests: write, issues: write, id-token: write }
+    permissions: { contents: read, pull-requests: write, issues: write }
     steps:
       - uses: actions/checkout@v5
       - uses: actions/checkout@v5
@@ -55,6 +55,7 @@ jobs:
       - uses: anthropics/claude-code-action@v1
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          github_token: ${{ github.token }}
           # submitters are outside contributors; the prompt is fixed here and the tools below can only read and comment
           allowed_non_write_users: "*"
           prompt: |

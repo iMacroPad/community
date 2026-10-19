@@ -2,164 +2,50 @@
   "format": 1,
   "id": "community.sports-scores",
   "name": "Sports scores",
-  "version": "1.1.0",
+  "version": "2.0.0",
   "author": "iMacroPad community",
-  "blurb": "Your team on the pad: the next match, the last scores and the league table. Football, volleyball, basketball, NFL, NHL, F1 and more. Set your team or league on the widget (Edit ▸ the widget ▸ Live data); IDs are on thesportsdb.com (team page address). F1: your team’s and your driver’s standing and the next race in your time zone. Data: TheSportsDB free feed, ESPN and Jolpica (F1).",
+  "blurb": "Your teams in their own colours: team card, match countdown, scoreboard, full league tables (Europe, the US leagues, any country), player card, tennis rankings and Formula 1. Any sport and country: search, or browse sport ▸ country ▸ league. Five looks, six layouts. Data: TheSportsDB, ESPN, Jolpica.",
   "icon": "sportscourt",
-  "permissions": [
-    {
-      "capability": "network",
-      "reason": "The Mac asks TheSportsDB, ESPN and Jolpica for fixtures, scores and tables. Only the team or league you set is sent."
-    },
-    {
-      "capability": "liveData",
-      "reason": "The widgets show those answers and ask again every few minutes while on screen."
-    },
-    {
-      "capability": "html",
-      "reason": "The scoreboard and the tables are small static HTML pages; no script, nothing loaded."
-    }
-  ],
-  "integrations": [
-    {
-      "name": "team-next",
-      "title": "Team: next matches",
-      "kind": "rest",
-      "method": "GET",
-      "url": "https://www.thesportsdb.com/api/v1/json/123/eventsnext.php?id=${input:team}"
-    },
-    {
-      "name": "team-last",
-      "title": "Team: last results",
-      "kind": "rest",
-      "method": "GET",
-      "url": "https://www.thesportsdb.com/api/v1/json/123/eventslast.php?id=${input:team}"
-    },
-    {
-      "name": "league-table",
-      "title": "League table",
-      "kind": "rest",
-      "method": "GET",
-      "url": "https://www.thesportsdb.com/api/v1/json/123/lookuptable.php?l=${input:league}"
-    },
-    {
-      "name": "league-next",
-      "title": "League: coming up",
-      "kind": "rest",
-      "method": "GET",
-      "url": "https://www.thesportsdb.com/api/v1/json/123/eventsnextleague.php?id=${input:league}"
-    },
-    {
-      "name": "us-standings",
-      "title": "US league standings (ESPN)",
-      "kind": "rest",
-      "method": "GET",
-      "url": "https://site.api.espn.com/apis/v2/sports/${input:sport}/${input:league}/standings"
-    },
-    {
-      "name": "f1-drivers",
-      "title": "F1 driver standings",
-      "kind": "rest",
-      "method": "GET",
-      "url": "https://api.jolpi.ca/ergast/f1/current/driverStandings.json"
-    },
-    {
-      "name": "f1-constructor",
-      "title": "F1 team standing",
-      "kind": "rest",
-      "method": "GET",
-      "url": "https://api.jolpi.ca/ergast/f1/current/constructors/${input:team}/constructorStandings.json"
-    },
-    {
-      "name": "f1-driver",
-      "title": "F1 driver standing",
-      "kind": "rest",
-      "method": "GET",
-      "url": "https://api.jolpi.ca/ergast/f1/current/drivers/${input:driver}/driverStandings.json"
-    },
-    {
-      "name": "f1-next-race",
-      "title": "F1 next race",
-      "kind": "rest",
-      "method": "GET",
-      "url": "https://api.jolpi.ca/ergast/f1/current/next.json"
-    }
-  ],
+  "permissions": [],
   "components": [
     {
-      "kind": "markdown",
+      "kind": "info",
       "frame": {
         "x": 0,
         "y": 0,
         "w": 0.5,
-        "h": 0.25
+        "h": 0.5
+      },
+      "style": {
+        "tint": "surface",
+        "label": "Galatasaray"
+      },
+      "infoID": "sports.team",
+      "param": "133804",
+      "settings": {
+        "title": "Galatasaray"
+      }
+    },
+    {
+      "kind": "info",
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 0.5,
+        "h": 0.5
       },
       "style": {
         "tint": "surface",
         "label": "Next match · Galatasaray"
       },
-      "content": "{{#events|1}}### {{strLeague}}\n# {{strHomeTeam}} – {{strAwayTeam}}\n**{{strTimestamp|date}}**{{#strVenue}} · {{strVenue}}{{/strVenue}}\n{{/events}}{{^events}}No match coming up.{{/events}}",
-      "action": {
-        "integration": {
-          "plugin": "community.sports-scores",
-          "name": "team-next"
-        }
-      },
+      "infoID": "sports.next",
+      "param": "133804",
       "settings": {
-        "team": "133804"
-      },
-      "param": "900"
+        "title": "Galatasaray"
+      }
     },
     {
-      "kind": "html",
-      "frame": {
-        "x": 0,
-        "y": 0,
-        "w": 0.5,
-        "h": 0.1875
-      },
-      "style": {
-        "tint": "surface",
-        "label": "Last score · Galatasaray"
-      },
-      "content": "{{#results|1}}<div style=\"font-size:11px;opacity:.6;letter-spacing:.05em\">{{strLeague}} · {{dateEvent|date}}</div><div style=\"display:flex;align-items:center;justify-content:space-between;margin-top:8px;gap:8px\"><div style=\"flex:1;text-align:center;font-weight:600\">{{strHomeTeam}}</div><div style=\"font-size:34px;font-weight:800;font-variant-numeric:tabular-nums\">{{intHomeScore}}<span style=\"opacity:.4\"> : </span>{{intAwayScore}}</div><div style=\"flex:1;text-align:center;font-weight:600\">{{strAwayTeam}}</div></div>{{/results}}{{^results}}No result yet.{{/results}}",
-      "action": {
-        "integration": {
-          "plugin": "community.sports-scores",
-          "name": "team-last"
-        }
-      },
-      "settings": {
-        "team": "133804"
-      },
-      "param": "600"
-    },
-    {
-      "kind": "markdown",
-      "frame": {
-        "x": 0,
-        "y": 0,
-        "w": 0.5,
-        "h": 0.25
-      },
-      "style": {
-        "tint": "surface",
-        "label": "Results · Galatasaray"
-      },
-      "content": "### Results\n{{#results}}- {{dateEvent|date}} · {{strHomeTeam}} **{{intHomeScore}}–{{intAwayScore}}** {{strAwayTeam}}\n{{/results}}{{^results}}No results yet.{{/results}}",
-      "action": {
-        "integration": {
-          "plugin": "community.sports-scores",
-          "name": "team-last"
-        }
-      },
-      "settings": {
-        "team": "133804"
-      },
-      "param": "900"
-    },
-    {
-      "kind": "html",
+      "kind": "info",
       "frame": {
         "x": 0,
         "y": 0,
@@ -168,70 +54,17 @@
       },
       "style": {
         "tint": "surface",
-        "label": "Süper Lig table"
+        "label": "Last result · Galatasaray"
       },
-      "content": "<table style=\"width:100%;font-size:13px\"><tr><th style=\"text-align:left;opacity:.6;font-weight:500;font-size:11px\">#</th><th style=\"text-align:left;opacity:.6;font-weight:500;font-size:11px\">Team</th><th style=\"text-align:left;opacity:.6;font-weight:500;font-size:11px\">P</th><th style=\"text-align:left;opacity:.6;font-weight:500;font-size:11px\">W-D-L</th><th style=\"text-align:left;opacity:.6;font-weight:500;font-size:11px\">GD</th><th style=\"text-align:left;opacity:.6;font-weight:500;font-size:11px\">Pts</th></tr>{{#table}}<tr><td>{{intRank}}</td><td>{{strTeam}}</td><td>{{intPlayed}}</td><td>{{intWin}}-{{intDraw}}-{{intLoss}}</td><td>{{intGoalDifference}}</td><td><b>{{intPoints}}</b></td></tr>{{/table}}</table>{{^table}}No table for this league on the free feed.{{/table}}",
-      "action": {
-        "integration": {
-          "plugin": "community.sports-scores",
-          "name": "league-table"
-        }
-      },
+      "infoID": "sports.last",
+      "param": "133804",
       "settings": {
-        "league": "4339"
-      },
-      "param": "1800"
+        "title": "Galatasaray",
+        "look": "scoreboard"
+      }
     },
     {
-      "kind": "markdown",
-      "frame": {
-        "x": 0,
-        "y": 0,
-        "w": 0.5,
-        "h": 0.25
-      },
-      "style": {
-        "tint": "surface",
-        "label": "Next match · Halkbank (volleyball)"
-      },
-      "content": "{{#events|1}}### {{strLeague}}\n# {{strHomeTeam}} – {{strAwayTeam}}\n**{{strTimestamp|date}}**{{#strVenue}} · {{strVenue}}{{/strVenue}}\n{{/events}}{{^events}}No match coming up.{{/events}}",
-      "action": {
-        "integration": {
-          "plugin": "community.sports-scores",
-          "name": "team-next"
-        }
-      },
-      "settings": {
-        "team": "136621"
-      },
-      "param": "900"
-    },
-    {
-      "kind": "html",
-      "frame": {
-        "x": 0,
-        "y": 0,
-        "w": 0.5,
-        "h": 0.1875
-      },
-      "style": {
-        "tint": "surface",
-        "label": "Last score · Maple Leafs (NHL)"
-      },
-      "content": "{{#results|1}}<div style=\"font-size:11px;opacity:.6;letter-spacing:.05em\">{{strLeague}} · {{dateEvent|date}}</div><div style=\"display:flex;align-items:center;justify-content:space-between;margin-top:8px;gap:8px\"><div style=\"flex:1;text-align:center;font-weight:600\">{{strHomeTeam}}</div><div style=\"font-size:34px;font-weight:800;font-variant-numeric:tabular-nums\">{{intHomeScore}}<span style=\"opacity:.4\"> : </span>{{intAwayScore}}</div><div style=\"flex:1;text-align:center;font-weight:600\">{{strAwayTeam}}</div></div>{{/results}}{{^results}}No result yet.{{/results}}",
-      "action": {
-        "integration": {
-          "plugin": "community.sports-scores",
-          "name": "team-last"
-        }
-      },
-      "settings": {
-        "team": "134837"
-      },
-      "param": "600"
-    },
-    {
-      "kind": "html",
+      "kind": "info",
       "frame": {
         "x": 0,
         "y": 0,
@@ -240,23 +73,18 @@
       },
       "style": {
         "tint": "surface",
-        "label": "NHL standings"
+        "label": "Turkish Super Lig"
       },
-      "content": "{{#children}}<div style=\"font-size:11px;opacity:.6;letter-spacing:.05em;margin-top:6px\">{{name}}</div><table style=\"width:100%;font-size:13px\">{{#standings.entries}}<tr><td>{{team.displayName}}</td><td style=\"text-align:right\">{{stats.overall.displayValue}}</td><td style=\"text-align:right;opacity:.6\">{{stats.streak.displayValue}}</td></tr>{{/standings.entries}}</table>{{/children}}",
-      "action": {
-        "integration": {
-          "plugin": "community.sports-scores",
-          "name": "us-standings"
-        }
-      },
+      "infoID": "sports.table",
+      "param": "4339",
       "settings": {
-        "sport": "hockey",
-        "league": "nhl"
-      },
-      "param": "1800"
+        "title": "Turkish Super Lig",
+        "team": "133804",
+        "team.title": "Galatasaray"
+      }
     },
     {
-      "kind": "html",
+      "kind": "info",
       "frame": {
         "x": 0,
         "y": 0,
@@ -265,134 +93,844 @@
       },
       "style": {
         "tint": "surface",
-        "label": "NFL standings"
+        "label": "Victor Osimhen"
       },
-      "content": "{{#children}}<div style=\"font-size:11px;opacity:.6;letter-spacing:.05em;margin-top:6px\">{{name}}</div><table style=\"width:100%;font-size:13px\">{{#standings.entries}}<tr><td>{{team.displayName}}</td><td style=\"text-align:right\">{{stats.overall.displayValue}}</td><td style=\"text-align:right;opacity:.6\">{{stats.streak.displayValue}}</td></tr>{{/standings.entries}}</table>{{/children}}",
-      "action": {
-        "integration": {
-          "plugin": "community.sports-scores",
-          "name": "us-standings"
-        }
-      },
+      "infoID": "sports.player",
+      "param": "34172022",
       "settings": {
-        "sport": "football",
-        "league": "nfl"
-      },
-      "param": "1800"
+        "title": "Victor Osimhen"
+      }
     },
     {
-      "kind": "markdown",
+      "kind": "info",
       "frame": {
         "x": 0,
         "y": 0,
         "w": 0.5,
-        "h": 0.25
-      },
-      "style": {
-        "tint": "surface",
-        "label": "F1 next session"
-      },
-      "content": "{{#events|1}}### {{strLeague}} · round {{intRound}}\n# {{strEvent}}\n**{{strTimestamp|date}}**{{#strVenue}} · {{strVenue}}{{/strVenue}}\n{{/events}}{{^events}}Nothing scheduled.{{/events}}",
-      "action": {
-        "integration": {
-          "plugin": "community.sports-scores",
-          "name": "league-next"
-        }
-      },
-      "settings": {
-        "league": "4370"
-      },
-      "param": "1800"
-    },
-    {
-      "kind": "html",
-      "frame": {
-        "x": 0,
-        "y": 0,
-        "w": 0.5,
-        "h": 0.375
-      },
-      "style": {
-        "tint": "surface",
-        "label": "F1 drivers"
-      },
-      "content": "{{#MRData.StandingsTable.StandingsLists|1}}<div style=\"font-size:11px;letter-spacing:.14em;text-transform:uppercase;opacity:.6;margin-bottom:10px\">Drivers · F1 {{season}} · after round {{round}}</div><table style=\"width:100%;font-size:16px\">{{#DriverStandings|10}}<tr><td style=\"width:28px;opacity:.55;text-align:right\">{{position}}</td><td><b>{{Driver.familyName}}</b> <span style=\"opacity:.55;font-size:13px\">{{Constructors.0.name}}</span></td><td style=\"text-align:right;font-weight:700\">{{points}}</td></tr>{{/DriverStandings}}</table>{{/MRData.StandingsTable.StandingsLists}}{{^MRData.StandingsTable.StandingsLists}}No standings yet this season.{{/MRData.StandingsTable.StandingsLists}}",
-      "action": {
-        "integration": {
-          "plugin": "community.sports-scores",
-          "name": "f1-drivers"
-        }
-      },
-      "param": "3600"
-    },
-    {
-      "kind": "html",
-      "frame": {
-        "x": 0,
-        "y": 0,
-        "w": 0.5,
-        "h": 0.375
-      },
-      "style": {
-        "tint": "surface",
-        "label": "F1 team · Ferrari"
-      },
-      "content": "{{#MRData.StandingsTable.StandingsLists|1}}{{#ConstructorStandings|1}}<div style=\"height:calc(100vh - 20px);display:flex;flex-direction:column;justify-content:space-between\"><div style=\"font-size:11px;letter-spacing:.14em;text-transform:uppercase;opacity:.6\">Constructors · F1 {{season}}</div><div><div style=\"height:4px;width:56px;border-radius:2px;background:#e10600\"></div><div style=\"display:flex;align-items:baseline;gap:14px;margin-top:8px\"><span style=\"font-size:64px;font-weight:800;line-height:1;color:#e10600\">P{{position}}</span><span style=\"font-size:28px;font-weight:700;line-height:1.1\">{{Constructor.name}}</span></div></div><div style=\"display:flex;gap:26px\"><div><div style=\"font-size:10px;letter-spacing:.14em;opacity:.55\">POINTS</div><div style=\"font-size:26px;font-weight:700\">{{points}}</div></div><div><div style=\"font-size:10px;letter-spacing:.14em;opacity:.55\">WINS</div><div style=\"font-size:26px;font-weight:700\">{{wins}}</div></div><div><div style=\"font-size:10px;letter-spacing:.14em;opacity:.55\">AFTER ROUND</div><div style=\"font-size:26px;font-weight:700\">{{round}}</div></div></div></div>{{/ConstructorStandings}}{{/MRData.StandingsTable.StandingsLists}}{{^MRData.StandingsTable.StandingsLists}}No standings yet this season.{{/MRData.StandingsTable.StandingsLists}}",
-      "action": {
-        "integration": {
-          "plugin": "community.sports-scores",
-          "name": "f1-constructor"
-        }
-      },
-      "settings": {
-        "team": "ferrari"
-      },
-      "param": "3600"
-    },
-    {
-      "kind": "html",
-      "frame": {
-        "x": 0,
-        "y": 0,
-        "w": 0.5,
-        "h": 0.375
-      },
-      "style": {
-        "tint": "surface",
-        "label": "F1 driver · Hamilton"
-      },
-      "content": "{{#MRData.StandingsTable.StandingsLists|1}}{{#DriverStandings|1}}<div style=\"height:calc(100vh - 20px);display:flex;flex-direction:column;justify-content:space-between\"><div style=\"font-size:11px;letter-spacing:.14em;text-transform:uppercase;opacity:.6\">Drivers · F1 {{season}}</div><div><div style=\"height:4px;width:56px;border-radius:2px;background:#e10600\"></div><div style=\"display:flex;align-items:baseline;gap:14px;margin-top:8px\"><span style=\"font-size:64px;font-weight:800;line-height:1;color:#e10600\">P{{position}}</span><span style=\"font-size:28px;font-weight:700;line-height:1.1\">{{Driver.givenName}} {{Driver.familyName}}<div style=\"font-size:14px;font-weight:500;opacity:.65;margin-top:4px\">#{{Driver.permanentNumber}} · {{Constructors.0.name}}</div></span></div></div><div style=\"display:flex;gap:26px\"><div><div style=\"font-size:10px;letter-spacing:.14em;opacity:.55\">POINTS</div><div style=\"font-size:26px;font-weight:700\">{{points}}</div></div><div><div style=\"font-size:10px;letter-spacing:.14em;opacity:.55\">WINS</div><div style=\"font-size:26px;font-weight:700\">{{wins}}</div></div><div><div style=\"font-size:10px;letter-spacing:.14em;opacity:.55\">AFTER ROUND</div><div style=\"font-size:26px;font-weight:700\">{{round}}</div></div></div></div>{{/DriverStandings}}{{/MRData.StandingsTable.StandingsLists}}{{^MRData.StandingsTable.StandingsLists}}No standings yet this season.{{/MRData.StandingsTable.StandingsLists}}",
-      "action": {
-        "integration": {
-          "plugin": "community.sports-scores",
-          "name": "f1-driver"
-        }
-      },
-      "settings": {
-        "driver": "hamilton"
-      },
-      "param": "3600"
-    },
-    {
-      "kind": "html",
-      "frame": {
-        "x": 0,
-        "y": 0,
-        "w": 0.5,
-        "h": 0.375
+        "h": 0.5
       },
       "style": {
         "tint": "surface",
         "label": "F1 next race"
       },
-      "content": "{{#MRData.RaceTable.Races|1}}<div style=\"height:calc(100vh - 20px);display:flex;flex-direction:column;justify-content:space-between\"><div style=\"font-size:11px;letter-spacing:.14em;text-transform:uppercase;opacity:.6\">Next race · round {{round}}</div><div><div style=\"height:4px;width:56px;border-radius:2px;background:#e10600\"></div><div style=\"font-size:30px;font-weight:800;line-height:1.1;margin-top:10px\">{{raceName}}</div><div style=\"font-size:15px;opacity:.65;margin-top:4px\">{{Circuit.circuitName}} · {{Circuit.Location.locality}}, {{Circuit.Location.country}}</div></div><div><div style=\"font-size:10px;letter-spacing:.14em;opacity:.55\">LIGHTS OUT</div><div style=\"font-size:30px;font-weight:700;color:#e10600\">{{date|date:time}}</div></div><div style=\"display:flex;gap:26px;font-size:13px\">{{#FirstPractice}}<div><div style=\"font-size:10px;letter-spacing:.14em;opacity:.55\">PRACTICE 1</div>{{date|date:time}}</div>{{/FirstPractice}}{{#Sprint}}<div><div style=\"font-size:10px;letter-spacing:.14em;opacity:.55\">SPRINT</div>{{date|date:time}}</div>{{/Sprint}}{{#Qualifying}}<div><div style=\"font-size:10px;letter-spacing:.14em;opacity:.55\">QUALIFYING</div>{{date|date:time}}</div>{{/Qualifying}}</div></div>{{/MRData.RaceTable.Races}}{{^MRData.RaceTable.Races}}The season is over.{{/MRData.RaceTable.Races}}",
-      "action": {
-        "integration": {
-          "plugin": "community.sports-scores",
-          "name": "f1-next-race"
-        }
+      "infoID": "f1.race"
+    },
+    {
+      "kind": "info",
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 0.5,
+        "h": 0.5
       },
-      "param": "3600"
+      "style": {
+        "tint": "surface",
+        "label": "F1 drivers"
+      },
+      "infoID": "f1.drivers"
+    },
+    {
+      "kind": "info",
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 0.5,
+        "h": 0.5
+      },
+      "style": {
+        "tint": "surface",
+        "label": "F1 constructors"
+      },
+      "infoID": "f1.teams"
+    },
+    {
+      "kind": "info",
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 0.5,
+        "h": 0.5
+      },
+      "style": {
+        "tint": "surface",
+        "label": "Lewis Hamilton"
+      },
+      "infoID": "f1.driver",
+      "param": "hamilton"
+    },
+    {
+      "kind": "info",
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 0.5,
+        "h": 0.5
+      },
+      "style": {
+        "tint": "surface",
+        "label": "Ferrari"
+      },
+      "infoID": "f1.team",
+      "param": "ferrari"
+    },
+    {
+      "kind": "info",
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 0.5,
+        "h": 0.5
+      },
+      "style": {
+        "tint": "surface",
+        "label": "Real Madrid"
+      },
+      "infoID": "sports.team",
+      "param": "133738",
+      "settings": {
+        "title": "Real Madrid",
+        "look": "photo"
+      }
+    },
+    {
+      "kind": "info",
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 0.5,
+        "h": 0.5
+      },
+      "style": {
+        "tint": "surface",
+        "label": "Next game · Lakers"
+      },
+      "infoID": "sports.next",
+      "param": "134867",
+      "settings": {
+        "title": "Los Angeles Lakers"
+      }
+    },
+    {
+      "kind": "info",
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 0.5,
+        "h": 0.5
+      },
+      "style": {
+        "tint": "surface",
+        "label": "Last game · Chiefs"
+      },
+      "infoID": "sports.last",
+      "param": "134931",
+      "settings": {
+        "title": "Kansas City Chiefs"
+      }
+    },
+    {
+      "kind": "info",
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 0.5,
+        "h": 0.5
+      },
+      "style": {
+        "tint": "surface",
+        "label": "Last game · Maple Leafs"
+      },
+      "infoID": "sports.last",
+      "param": "134837",
+      "settings": {
+        "title": "Toronto Maple Leafs",
+        "look": "scoreboard"
+      }
+    },
+    {
+      "kind": "info",
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 0.5,
+        "h": 0.5
+      },
+      "style": {
+        "tint": "surface",
+        "label": "Next match · Halkbank"
+      },
+      "infoID": "sports.next",
+      "param": "136621",
+      "settings": {
+        "title": "Halkbank Ankara"
+      }
+    },
+    {
+      "kind": "info",
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 0.5,
+        "h": 0.5
+      },
+      "style": {
+        "tint": "surface",
+        "label": "Premier League"
+      },
+      "infoID": "sports.table",
+      "param": "espn:soccer/eng.1",
+      "settings": {
+        "title": "English Premier League",
+        "team.title": "Arsenal"
+      }
+    },
+    {
+      "kind": "info",
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 0.5,
+        "h": 0.5
+      },
+      "style": {
+        "tint": "surface",
+        "label": "LaLiga"
+      },
+      "infoID": "sports.table",
+      "param": "espn:soccer/esp.1",
+      "settings": {
+        "title": "Spanish LaLiga",
+        "team.title": "Real Madrid"
+      }
+    },
+    {
+      "kind": "info",
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 0.5,
+        "h": 0.5
+      },
+      "style": {
+        "tint": "surface",
+        "label": "Champions League"
+      },
+      "infoID": "sports.table",
+      "param": "espn:soccer/uefa.champions",
+      "settings": {
+        "title": "UEFA Champions League",
+        "team.title": "Galatasaray"
+      }
+    },
+    {
+      "kind": "info",
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 0.5,
+        "h": 0.5
+      },
+      "style": {
+        "tint": "surface",
+        "label": "NFL"
+      },
+      "infoID": "sports.table",
+      "param": "espn:football/nfl",
+      "settings": {
+        "title": "NFL",
+        "team.title": "Kansas City Chiefs"
+      }
+    },
+    {
+      "kind": "info",
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 0.5,
+        "h": 0.5
+      },
+      "style": {
+        "tint": "surface",
+        "label": "NHL"
+      },
+      "infoID": "sports.table",
+      "param": "espn:hockey/nhl",
+      "settings": {
+        "title": "NHL",
+        "team.title": "Toronto Maple Leafs"
+      }
+    },
+    {
+      "kind": "info",
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 0.5,
+        "h": 0.5
+      },
+      "style": {
+        "tint": "surface",
+        "label": "NBA"
+      },
+      "infoID": "sports.table",
+      "param": "espn:basketball/nba",
+      "settings": {
+        "title": "NBA",
+        "team.title": "Los Angeles Lakers"
+      }
+    },
+    {
+      "kind": "info",
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 0.5,
+        "h": 0.5
+      },
+      "style": {
+        "tint": "surface",
+        "label": "MLS"
+      },
+      "infoID": "sports.table",
+      "param": "espn:soccer/usa.1",
+      "settings": {
+        "title": "MLS"
+      }
+    },
+    {
+      "kind": "info",
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 0.5,
+        "h": 0.5
+      },
+      "style": {
+        "tint": "surface",
+        "label": "ATP ranking"
+      },
+      "infoID": "sports.tennis",
+      "param": "atp"
+    },
+    {
+      "kind": "info",
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 0.5,
+        "h": 0.5
+      },
+      "style": {
+        "tint": "surface",
+        "label": "WTA ranking"
+      },
+      "infoID": "sports.tennis",
+      "param": "wta"
+    }
+  ],
+  "profiles": [
+    {
+      "name": "Football · Süper Lig",
+      "icon": "soccerball",
+      "layout": {
+        "columns": 12,
+        "rows": 8,
+        "backgroundHex": "#000000",
+        "widgets": [
+          {
+            "kind": "info",
+            "frame": {
+              "x": 0,
+              "y": 0,
+              "w": 0.5,
+              "h": 0.45
+            },
+            "style": {
+              "tint": "surface",
+              "label": "Galatasaray"
+            },
+            "infoID": "sports.team",
+            "param": "133804",
+            "settings": {
+              "title": "Galatasaray"
+            }
+          },
+          {
+            "kind": "info",
+            "frame": {
+              "x": 0.5,
+              "y": 0,
+              "w": 0.5,
+              "h": 0.45
+            },
+            "style": {
+              "tint": "surface",
+              "label": "Next match · Galatasaray"
+            },
+            "infoID": "sports.next",
+            "param": "133804",
+            "settings": {
+              "title": "Galatasaray"
+            }
+          },
+          {
+            "kind": "info",
+            "frame": {
+              "x": 0,
+              "y": 0.45,
+              "w": 0.4,
+              "h": 0.55
+            },
+            "style": {
+              "tint": "surface",
+              "label": "Turkish Super Lig"
+            },
+            "infoID": "sports.table",
+            "param": "4339",
+            "settings": {
+              "title": "Turkish Super Lig",
+              "team": "133804",
+              "team.title": "Galatasaray"
+            }
+          },
+          {
+            "kind": "info",
+            "frame": {
+              "x": 0.4,
+              "y": 0.45,
+              "w": 0.3,
+              "h": 0.55
+            },
+            "style": {
+              "tint": "surface",
+              "label": "Last result · Galatasaray"
+            },
+            "infoID": "sports.last",
+            "param": "133804",
+            "settings": {
+              "title": "Galatasaray",
+              "look": "scoreboard"
+            }
+          },
+          {
+            "kind": "info",
+            "frame": {
+              "x": 0.7,
+              "y": 0.45,
+              "w": 0.3,
+              "h": 0.55
+            },
+            "style": {
+              "tint": "surface",
+              "label": "Victor Osimhen"
+            },
+            "infoID": "sports.player",
+            "param": "34172022",
+            "settings": {
+              "title": "Victor Osimhen"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "Formula 1",
+      "icon": "flag.checkered",
+      "layout": {
+        "columns": 12,
+        "rows": 8,
+        "backgroundHex": "#000000",
+        "widgets": [
+          {
+            "kind": "info",
+            "frame": {
+              "x": 0,
+              "y": 0,
+              "w": 0.5,
+              "h": 0.5
+            },
+            "style": {
+              "tint": "surface",
+              "label": "F1 next race"
+            },
+            "infoID": "f1.race"
+          },
+          {
+            "kind": "info",
+            "frame": {
+              "x": 0.5,
+              "y": 0,
+              "w": 0.25,
+              "h": 0.5
+            },
+            "style": {
+              "tint": "surface",
+              "label": "Lewis Hamilton"
+            },
+            "infoID": "f1.driver",
+            "param": "hamilton"
+          },
+          {
+            "kind": "info",
+            "frame": {
+              "x": 0.75,
+              "y": 0,
+              "w": 0.25,
+              "h": 0.5
+            },
+            "style": {
+              "tint": "surface",
+              "label": "Ferrari"
+            },
+            "infoID": "f1.team",
+            "param": "ferrari"
+          },
+          {
+            "kind": "info",
+            "frame": {
+              "x": 0,
+              "y": 0.5,
+              "w": 0.5,
+              "h": 0.5
+            },
+            "style": {
+              "tint": "surface",
+              "label": "F1 drivers"
+            },
+            "infoID": "f1.drivers"
+          },
+          {
+            "kind": "info",
+            "frame": {
+              "x": 0.5,
+              "y": 0.5,
+              "w": 0.5,
+              "h": 0.5
+            },
+            "style": {
+              "tint": "surface",
+              "label": "F1 constructors"
+            },
+            "infoID": "f1.teams"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Football · Europe",
+      "icon": "soccerball.inverse",
+      "layout": {
+        "columns": 12,
+        "rows": 8,
+        "backgroundHex": "#000000",
+        "widgets": [
+          {
+            "kind": "info",
+            "frame": {
+              "x": 0,
+              "y": 0,
+              "w": 0.34,
+              "h": 1
+            },
+            "style": {
+              "tint": "surface",
+              "label": "Premier League"
+            },
+            "infoID": "sports.table",
+            "param": "espn:soccer/eng.1",
+            "settings": {
+              "title": "English Premier League",
+              "team.title": "Arsenal"
+            }
+          },
+          {
+            "kind": "info",
+            "frame": {
+              "x": 0.34,
+              "y": 0,
+              "w": 0.33,
+              "h": 1
+            },
+            "style": {
+              "tint": "surface",
+              "label": "LaLiga"
+            },
+            "infoID": "sports.table",
+            "param": "espn:soccer/esp.1",
+            "settings": {
+              "title": "Spanish LaLiga",
+              "team.title": "Real Madrid"
+            }
+          },
+          {
+            "kind": "info",
+            "frame": {
+              "x": 0.67,
+              "y": 0,
+              "w": 0.33,
+              "h": 0.6
+            },
+            "style": {
+              "tint": "surface",
+              "label": "Champions League"
+            },
+            "infoID": "sports.table",
+            "param": "espn:soccer/uefa.champions",
+            "settings": {
+              "title": "UEFA Champions League",
+              "team.title": "Galatasaray"
+            }
+          },
+          {
+            "kind": "info",
+            "frame": {
+              "x": 0.67,
+              "y": 0.6,
+              "w": 0.33,
+              "h": 0.4
+            },
+            "style": {
+              "tint": "surface",
+              "label": "Real Madrid"
+            },
+            "infoID": "sports.team",
+            "param": "133738",
+            "settings": {
+              "title": "Real Madrid",
+              "look": "photo"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "US leagues",
+      "icon": "sportscourt",
+      "layout": {
+        "columns": 12,
+        "rows": 8,
+        "backgroundHex": "#000000",
+        "widgets": [
+          {
+            "kind": "info",
+            "frame": {
+              "x": 0,
+              "y": 0,
+              "w": 0.34,
+              "h": 1
+            },
+            "style": {
+              "tint": "surface",
+              "label": "NFL"
+            },
+            "infoID": "sports.table",
+            "param": "espn:football/nfl",
+            "settings": {
+              "title": "NFL",
+              "team.title": "Kansas City Chiefs"
+            }
+          },
+          {
+            "kind": "info",
+            "frame": {
+              "x": 0.34,
+              "y": 0,
+              "w": 0.33,
+              "h": 1
+            },
+            "style": {
+              "tint": "surface",
+              "label": "NHL"
+            },
+            "infoID": "sports.table",
+            "param": "espn:hockey/nhl",
+            "settings": {
+              "title": "NHL",
+              "team.title": "Toronto Maple Leafs"
+            }
+          },
+          {
+            "kind": "info",
+            "frame": {
+              "x": 0.67,
+              "y": 0,
+              "w": 0.33,
+              "h": 0.55
+            },
+            "style": {
+              "tint": "surface",
+              "label": "NBA"
+            },
+            "infoID": "sports.table",
+            "param": "espn:basketball/nba",
+            "settings": {
+              "title": "NBA",
+              "team.title": "Los Angeles Lakers"
+            }
+          },
+          {
+            "kind": "info",
+            "frame": {
+              "x": 0.67,
+              "y": 0.55,
+              "w": 0.33,
+              "h": 0.45
+            },
+            "style": {
+              "tint": "surface",
+              "label": "Last game · Chiefs"
+            },
+            "infoID": "sports.last",
+            "param": "134931",
+            "settings": {
+              "title": "Kansas City Chiefs"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "Tennis",
+      "icon": "figure.tennis",
+      "layout": {
+        "columns": 12,
+        "rows": 8,
+        "backgroundHex": "#000000",
+        "widgets": [
+          {
+            "kind": "info",
+            "frame": {
+              "x": 0,
+              "y": 0,
+              "w": 0.5,
+              "h": 1
+            },
+            "style": {
+              "tint": "surface",
+              "label": "ATP ranking"
+            },
+            "infoID": "sports.tennis",
+            "param": "atp"
+          },
+          {
+            "kind": "info",
+            "frame": {
+              "x": 0.5,
+              "y": 0,
+              "w": 0.5,
+              "h": 1
+            },
+            "style": {
+              "tint": "surface",
+              "label": "WTA ranking"
+            },
+            "infoID": "sports.tennis",
+            "param": "wta"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Around the world",
+      "icon": "globe",
+      "layout": {
+        "columns": 12,
+        "rows": 8,
+        "backgroundHex": "#000000",
+        "widgets": [
+          {
+            "kind": "info",
+            "frame": {
+              "x": 0,
+              "y": 0,
+              "w": 0.5,
+              "h": 0.5
+            },
+            "style": {
+              "tint": "surface",
+              "label": "Next game · Lakers"
+            },
+            "infoID": "sports.next",
+            "param": "134867",
+            "settings": {
+              "title": "Los Angeles Lakers"
+            }
+          },
+          {
+            "kind": "info",
+            "frame": {
+              "x": 0.5,
+              "y": 0,
+              "w": 0.5,
+              "h": 0.5
+            },
+            "style": {
+              "tint": "surface",
+              "label": "Last game · Maple Leafs"
+            },
+            "infoID": "sports.last",
+            "param": "134837",
+            "settings": {
+              "title": "Toronto Maple Leafs",
+              "look": "scoreboard"
+            }
+          },
+          {
+            "kind": "info",
+            "frame": {
+              "x": 0,
+              "y": 0.5,
+              "w": 0.34,
+              "h": 0.5
+            },
+            "style": {
+              "tint": "surface",
+              "label": "MLS"
+            },
+            "infoID": "sports.table",
+            "param": "espn:soccer/usa.1",
+            "settings": {
+              "title": "MLS"
+            }
+          },
+          {
+            "kind": "info",
+            "frame": {
+              "x": 0.34,
+              "y": 0.5,
+              "w": 0.33,
+              "h": 0.5
+            },
+            "style": {
+              "tint": "surface",
+              "label": "Next match · Halkbank"
+            },
+            "infoID": "sports.next",
+            "param": "136621",
+            "settings": {
+              "title": "Halkbank Ankara"
+            }
+          },
+          {
+            "kind": "info",
+            "frame": {
+              "x": 0.67,
+              "y": 0.5,
+              "w": 0.33,
+              "h": 0.5
+            },
+            "style": {
+              "tint": "surface",
+              "label": "Last game · Chiefs"
+            },
+            "infoID": "sports.last",
+            "param": "134931",
+            "settings": {
+              "title": "Kansas City Chiefs"
+            }
+          }
+        ]
+      }
     }
   ]
 }

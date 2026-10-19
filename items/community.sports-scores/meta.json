@@ -1,6 +1,8 @@
-{ "type": "widgets", "tags": ["sports", "f1", "football", "live data"], "screenshots": [
-  { "file": "1.jpg", "caption": "An F1 layout on an iPad mini: team, driver, next race and the drivers' table, live" },
-  { "file": "2.jpg", "caption": "Your team's standing: Ferrari, P2 in the constructors' championship" },
-  { "file": "3.jpg", "caption": "Your driver's standing: Lewis Hamilton, P3" },
-  { "file": "4.jpg", "caption": "The next race, practice and qualifying in your own time zone" }
+{ "type": "widgets", "tags": ["sports", "football", "formula 1", "nba", "tennis", "live scores"], "screenshots": [
+  { "file": "1.jpg", "caption": "Formula 1: next race with a countdown, Hamilton's card, Ferrari's standing, drivers' and constructors' tables" },
+  { "file": "2.jpg", "caption": "Süper Lig: Galatasaray's club card, next match, last result, the league table and a player card" },
+  { "file": "3.jpg", "caption": "Europe: full Premier League, LaLiga and Champions League tables, and Real Madrid's card" },
+  { "file": "4.jpg", "caption": "US leagues: NFL, NHL and NBA standings by conference, and the Chiefs' last game" },
+  { "file": "5.jpg", "caption": "Tennis: the ATP and WTA rankings with the world number ones" },
+  { "file": "6.jpg", "caption": "Around the world: Lakers, Maple Leafs, MLS, Halkbank volleyball and the Chiefs" }
 ] }

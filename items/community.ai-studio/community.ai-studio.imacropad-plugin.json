@@ -1,269 +1,269 @@
 {
-  "format": 1,
-  "id": "community.ai-studio",
-  "name": "AI Studio",
-  "version": "1.0.0",
-  "author": "iMacroPad community",
-  "blurb": "Keys that call AI services: an image from the text on your clipboard (Gemini 2.5 Flash Image, “Nano Banana”), a short answer to it, a video through an MCP server, and one of your own Shortcuts.",
-  "icon": "sparkles",
-  "themes": [
-    {
-      "id": "community.ai-studio.neon",
-      "name": "AI Studio Neon",
-      "family": "AI Studio",
-      "blurb": "Deep blue with Gemini's blue-to-violet glow.",
-      "palette": {
-        "background": "#0B1020",
-        "key": "#1A2238",
-        "accent": "#4F8CFF",
-        "accent2": "#9B72F2",
-        "danger": "#F2617A",
-        "surface": "#080C18",
-        "legend": "#EAF0FF",
-        "legendOnAccent": "#0B1020",
-        "border": "#2A3554",
-        "glow": "#4F8CFF"
+ "format": 1,
+ "id": "community.ai-studio",
+ "name": "AI Studio",
+ "version": "1.1.0",
+ "author": "iMacroPad community",
+ "blurb": "Keys that call AI services: an image from the text on your clipboard (Gemini 2.5 Flash Image, “Nano Banana”), a short answer to it, a video through an MCP server, and one of your own Shortcuts.",
+ "icon": "sparkles",
+ "themes": [
+  {
+   "id": "community.ai-studio.neon",
+   "name": "AI Studio Neon",
+   "family": "AI Studio",
+   "blurb": "Deep blue with Gemini's blue-to-violet glow.",
+   "palette": {
+    "background": "#0B1020",
+    "key": "#1A2238",
+    "accent": "#4F8CFF",
+    "accent2": "#9B72F2",
+    "danger": "#F2617A",
+    "surface": "#080C18",
+    "legend": "#EAF0FF",
+    "legendOnAccent": "#0B1020",
+    "border": "#2A3554",
+    "glow": "#4F8CFF"
+   },
+   "keycap": "glass",
+   "cornerRadius": 14,
+   "keyGap": 0.07,
+   "pressEffect": "glow"
+  }
+ ],
+ "profiles": [
+  {
+   "name": "AI Studio",
+   "icon": "sparkles",
+   "themeID": "community.ai-studio.neon",
+   "layout": {
+    "columns": 6,
+    "rows": 8,
+    "backgroundHex": "#000000",
+    "widgets": [
+     {
+      "kind": "button",
+      "frame": {
+       "x": 0,
+       "y": 0,
+       "w": 0.5,
+       "h": 0.25
       },
-      "keycap": "glass",
-      "cornerRadius": 14,
-      "keyGap": 0.07,
-      "pressEffect": "glow"
-    }
-  ],
-  "profiles": [
-    {
-      "name": "AI Studio",
-      "icon": "sparkles",
-      "themeID": "community.ai-studio.neon",
-      "layout": {
-        "columns": 6,
-        "rows": 8,
-        "backgroundHex": "#000000",
-        "widgets": [
-          {
-            "kind": "button",
-            "frame": {
-              "x": 0,
-              "y": 0,
-              "w": 0.5,
-              "h": 0.25
-            },
-            "style": {
-              "tint": "accent",
-              "iconSystemName": "photo.badge.plus",
-              "label": "Image from clipboard"
-            },
-            "action": {
-              "integration": {
-                "plugin": "community.ai-studio",
-                "name": "generate-image"
-              }
-            }
-          },
-          {
-            "kind": "button",
-            "frame": {
-              "x": 0.5,
-              "y": 0,
-              "w": 0.5,
-              "h": 0.25
-            },
-            "style": {
-              "tint": "accent2",
-              "iconSystemName": "text.bubble",
-              "label": "Answer the clipboard"
-            },
-            "action": {
-              "integration": {
-                "plugin": "community.ai-studio",
-                "name": "ask"
-              }
-            }
-          },
-          {
-            "kind": "button",
-            "frame": {
-              "x": 0,
-              "y": 0.25,
-              "w": 0.5,
-              "h": 0.25
-            },
-            "style": {
-              "tint": "key",
-              "iconSystemName": "film",
-              "label": "Video (MCP)"
-            },
-            "action": {
-              "integration": {
-                "plugin": "community.ai-studio",
-                "name": "generate-video"
-              }
-            }
-          },
-          {
-            "kind": "button",
-            "frame": {
-              "x": 0.5,
-              "y": 0.25,
-              "w": 0.5,
-              "h": 0.25
-            },
-            "style": {
-              "tint": "key",
-              "iconSystemName": "square.stack.3d.up",
-              "label": "My Shortcut"
-            },
-            "action": {
-              "runShortcut": {
-                "_0": "AI Studio"
-              }
-            }
-          },
-          {
-            "kind": "button",
-            "frame": {
-              "x": 0,
-              "y": 0.5,
-              "w": 0.5,
-              "h": 0.125
-            },
-            "style": {
-              "iconSystemName": "doc.on.doc",
-              "label": "Copy"
-            },
-            "action": {
-              "keyChord": {
-                "_0": {
-                  "key": "c",
-                  "modifiers": [
-                    "command"
-                  ]
-                }
-              }
-            }
-          },
-          {
-            "kind": "button",
-            "frame": {
-              "x": 0.5,
-              "y": 0.5,
-              "w": 0.5,
-              "h": 0.125
-            },
-            "style": {
-              "iconSystemName": "doc.on.clipboard",
-              "label": "Paste"
-            },
-            "action": {
-              "keyChord": {
-                "_0": {
-                  "key": "v",
-                  "modifiers": [
-                    "command"
-                  ]
-                }
-              }
-            }
-          }
-        ]
+      "style": {
+       "tint": "accent",
+       "iconSystemName": "photo.badge.plus",
+       "label": "Image from clipboard"
+      },
+      "action": {
+       "integration": {
+        "plugin": "community.ai-studio",
+        "name": "generate-image"
+       }
       }
-    }
-  ],
-  "integrations": [
-    {
-      "name": "generate-image",
-      "title": "Image from clipboard",
-      "kind": "rest",
-      "method": "POST",
-      "url": "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-image:generateContent",
-      "headers": {
-        "x-goog-api-key": "${secret:GEMINI_API_KEY}"
+     },
+     {
+      "kind": "button",
+      "frame": {
+       "x": 0.5,
+       "y": 0,
+       "w": 0.5,
+       "h": 0.25
       },
-      "body": "{\"contents\":[{\"parts\":[{\"text\":\"${clipboard}\"}]}]}",
-      "extract": "candidates.0.content.parts.*.inlineData.data",
-      "output": "save",
-      "fileType": "png"
-    },
-    {
-      "name": "ask",
-      "title": "Answer the clipboard",
-      "kind": "rest",
-      "method": "POST",
-      "url": "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent",
-      "headers": {
-        "x-goog-api-key": "${secret:GEMINI_API_KEY}"
+      "style": {
+       "tint": "accent2",
+       "iconSystemName": "text.bubble",
+       "label": "Answer the clipboard"
       },
-      "body": "{\"contents\":[{\"parts\":[{\"text\":\"${clipboard}\"}]}]}",
-      "extract": "candidates.0.content.parts.*.text",
-      "output": "copy"
-    },
-    {
-      "name": "generate-video",
-      "title": "Video (MCP)",
-      "kind": "mcp",
-      "url": "https://mcp.higgsfield.ai/mcp",
-      "headers": {
-        "Authorization": "Bearer ${secret:HIGGSFIELD_TOKEN}"
+      "action": {
+       "integration": {
+        "plugin": "community.ai-studio",
+        "name": "ask"
+       }
+      }
+     },
+     {
+      "kind": "button",
+      "frame": {
+       "x": 0,
+       "y": 0.25,
+       "w": 0.5,
+       "h": 0.25
       },
-      "tool": "generate_video",
-      "body": "{\"prompt\":\"${clipboard}\"}",
-      "output": "open"
-    }
-  ],
-  "permissions": [
-    {
-      "capability": "keys",
-      "reason": "The Copy and Paste keys press ⌘C and ⌘V so a prompt can be copied and an answer pasted."
-    },
-    {
-      "capability": "shortcuts",
-      "reason": "The My Shortcut key runs your own Shortcut named “AI Studio”."
-    },
-    {
-      "capability": "network",
-      "reason": "The image, answer and video keys call Google's Gemini API and the Higgsfield MCP server."
-    },
-    {
-      "capability": "clipboard",
-      "reason": "The text on your clipboard is the prompt that is sent to those services."
-    },
-    {
-      "capability": "saveFiles",
-      "reason": "A generated image is saved as a PNG in Downloads/iMacroPad and opened."
-    },
-    {
-      "capability": "openLinks",
-      "reason": "A generated video comes back as a web link, which is opened in your browser."
-    }
-  ],
-  "components": [
-    {
+      "style": {
+       "tint": "key",
+       "iconSystemName": "film",
+       "label": "Video (MCP)"
+      },
+      "action": {
+       "integration": {
+        "plugin": "community.ai-studio",
+        "name": "generate-video"
+       }
+      }
+     },
+     {
+      "kind": "button",
+      "frame": {
+       "x": 0.5,
+       "y": 0.25,
+       "w": 0.5,
+       "h": 0.25
+      },
+      "style": {
+       "tint": "key",
+       "iconSystemName": "square.stack.3d.up",
+       "label": "My Shortcut"
+      },
+      "action": {
+       "runShortcut": {
+        "_0": "AI Studio"
+       }
+      }
+     },
+     {
+      "kind": "button",
+      "frame": {
+       "x": 0,
+       "y": 0.5,
+       "w": 0.5,
+       "h": 0.125
+      },
+      "style": {
+       "iconSystemName": "doc.on.doc",
+       "label": "Copy"
+      },
+      "action": {
+       "keyChord": {
+        "_0": {
+         "key": "c",
+         "modifiers": [
+          "command"
+         ]
+        }
+       }
+      }
+     },
+     {
+      "kind": "button",
+      "frame": {
+       "x": 0.5,
+       "y": 0.5,
+       "w": 0.5,
+       "h": 0.125
+      },
+      "style": {
+       "iconSystemName": "doc.on.clipboard",
+       "label": "Paste"
+      },
+      "action": {
+       "keyChord": {
+        "_0": {
+         "key": "v",
+         "modifiers": [
+          "command"
+         ]
+        }
+       }
+      }
+     },
+     {
       "kind": "markdown",
       "frame": {
-        "x": 0,
-        "y": 0,
-        "w": 0.5,
-        "h": 0.25
+       "x": 0,
+       "y": 0.625,
+       "w": 1,
+       "h": 0.375
       },
       "style": {
-        "tint": "surface",
-        "label": "How to use"
+       "tint": "surface",
+       "label": "How to use"
       },
       "content": "## AI Studio\n1. **Copy** a prompt\n2. Press *Image* or *Answer*\n3. The result opens or lands on the clipboard"
-    },
-    {
-      "kind": "chart",
-      "frame": {
-        "x": 0,
-        "y": 0,
-        "w": 0.5,
-        "h": 0.25
-      },
-      "style": {
-        "tint": "surface",
-        "label": "Images this week"
-      },
-      "content": "{\"type\":\"bar\",\"title\":\"Images this week\",\"labels\":[\"Mon\",\"Tue\",\"Wed\",\"Thu\",\"Fri\"],\"values\":[4,7,3,9,6]}"
-    }
-  ]
+     }
+    ]
+   }
+  }
+ ],
+ "integrations": [
+  {
+   "name": "generate-image",
+   "title": "Image from clipboard",
+   "kind": "rest",
+   "method": "POST",
+   "url": "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-image:generateContent",
+   "headers": {
+    "x-goog-api-key": "${secret:GEMINI_API_KEY}"
+   },
+   "body": "{\"contents\":[{\"parts\":[{\"text\":\"${clipboard}\"}]}]}",
+   "extract": "candidates.0.content.parts.*.inlineData.data",
+   "output": "save",
+   "fileType": "png"
+  },
+  {
+   "name": "ask",
+   "title": "Answer the clipboard",
+   "kind": "rest",
+   "method": "POST",
+   "url": "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent",
+   "headers": {
+    "x-goog-api-key": "${secret:GEMINI_API_KEY}"
+   },
+   "body": "{\"contents\":[{\"parts\":[{\"text\":\"Answer in two or three sentences. ${clipboard}\"}]}]}",
+   "extract": "candidates.0.content.parts.*.text",
+   "output": "copy"
+  },
+  {
+   "name": "generate-video",
+   "title": "Video (MCP)",
+   "kind": "mcp",
+   "url": "https://mcp.higgsfield.ai/mcp",
+   "headers": {
+    "Authorization": "Bearer ${secret:HIGGSFIELD_TOKEN}"
+   },
+   "tool": "generate_video",
+   "body": "{\"prompt\":\"${clipboard}\"}",
+   "output": "open"
+  }
+ ],
+ "permissions": [
+  {
+   "capability": "keys",
+   "reason": "The Copy and Paste keys press ⌘C and ⌘V so a prompt can be copied and an answer pasted."
+  },
+  {
+   "capability": "shortcuts",
+   "reason": "The My Shortcut key runs your own Shortcut named “AI Studio”."
+  },
+  {
+   "capability": "network",
+   "reason": "The image, answer and video keys call Google's Gemini API and the Higgsfield MCP server."
+  },
+  {
+   "capability": "clipboard",
+   "reason": "The text on your clipboard is the prompt that is sent to those services."
+  },
+  {
+   "capability": "saveFiles",
+   "reason": "A generated image is saved as a PNG in Downloads/iMacroPad and opened."
+  },
+  {
+   "capability": "openLinks",
+   "reason": "A generated video comes back as a web link, which is opened in your browser."
+  }
+ ],
+ "components": [
+  {
+   "kind": "markdown",
+   "frame": {
+    "x": 0,
+    "y": 0,
+    "w": 0.5,
+    "h": 0.25
+   },
+   "style": {
+    "tint": "surface",
+    "label": "How to use"
+   },
+   "content": "## AI Studio\n1. **Copy** a prompt\n2. Press *Image* or *Answer*\n3. The result opens or lands on the clipboard"
+  }
+ ]
 }

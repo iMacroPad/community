@@ -1,5 +1,3 @@
-{ "type": "widgets", "tags": ["markdown", "html", "chart", "starter"], "screenshots": [
-  { "file": "1.jpg", "caption": "All five widgets on one layout, in the Nord theme" },
-  { "file": "2.jpg", "caption": "A Markdown note card and a static HTML status board" },
-  { "file": "3.jpg", "caption": "A line chart, the Screenshot key and the Scroll dial" }
+{ "type": "widgets", "tags": ["status", "uptime", "monitoring", "developer"], "screenshots": [
+  { "file": "1.jpg", "caption": "The Status board: developer services and work tools at a glance, and three site monitors" }
 ] }

@@ -1,5 +1,5 @@
 {
- "repo": "imacropad/community",
+ "repo": "iMacroPad/community",
  "types": [
   "plugin",
   "layout",
@@ -73,13 +73,13 @@
     "generativelanguage.googleapis.com",
     "mcp.higgsfield.ai"
    ],
-   "file": "https://github.com/imacropad/community/releases/download/community.ai-studio%401.0.0/community.ai-studio.imacropad-plugin.json",
-   "added": null,
-   "updated": null,
+   "file": "https://github.com/iMacroPad/community/releases/download/community.ai-studio%401.0.0/community.ai-studio.imacropad-plugin.json",
+   "added": "2026-10-19",
+   "updated": "2026-10-19",
    "pick": false,
    "installs": 0,
    "likes": 0,
-   "issue": null
+   "issue": 1
   },
   {
    "id": "community.sports-scores",
@@ -142,13 +142,13 @@
     "site.api.espn.com",
     "api.jolpi.ca"
    ],
-   "file": "https://github.com/imacropad/community/releases/download/community.sports-scores%401.1.0/community.sports-scores.imacropad-plugin.json",
-   "added": null,
-   "updated": null,
+   "file": "https://github.com/iMacroPad/community/releases/download/community.sports-scores%401.1.0/community.sports-scores.imacropad-plugin.json",
+   "added": "2026-10-19",
+   "updated": "2026-10-19",
    "pick": true,
    "installs": 0,
    "likes": 0,
-   "issue": null
+   "issue": 2
   },
   {
    "id": "community.status-widgets",
@@ -199,13 +199,13 @@
     }
    ],
    "hosts": [],
-   "file": "https://github.com/imacropad/community/releases/download/community.status-widgets%401.0.0/community.status-widgets.imacropad-plugin.json",
-   "added": null,
-   "updated": null,
+   "file": "https://github.com/iMacroPad/community/releases/download/community.status-widgets%401.0.0/community.status-widgets.imacropad-plugin.json",
+   "added": "2026-10-19",
+   "updated": "2026-10-19",
    "pick": false,
    "installs": 0,
    "likes": 0,
-   "issue": null
+   "issue": 3
   },
   {
    "id": "community.usage-stats",
@@ -247,9 +247,9 @@
     }
    ],
    "hosts": [],
-   "file": "https://github.com/imacropad/community/releases/download/community.usage-stats%401.0.0/community.usage-stats.imacropad-plugin.json",
-   "added": null,
-   "updated": null,
+   "file": "https://github.com/iMacroPad/community/releases/download/community.usage-stats%401.0.0/community.usage-stats.imacropad-plugin.json",
+   "added": "2026-10-19",
+   "updated": "2026-10-19",
    "pick": true,
    "installs": 0,
    "likes": 0,

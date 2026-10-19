@@ -14,3 +14,4 @@ Keys that send the text on your clipboard to AI services and bring the answer ba
 2. Install, then switch on only the permissions you want. What stays off is removed from your copy.
 
 Nothing is sent until you press a key.
+

@@ -19,9 +19,9 @@ jobs:
       - uses: actions/checkout@v5
         with: { ref: "${{ github.event.pull_request.head.sha }}", repository: "${{ github.event.pull_request.head.repo.full_name }}", path: pr, persist-credentials: false }
       - name: Only items/ in a submission
+        env: { GH_TOKEN: "${{ github.token }}" }
         run: |
-          git -C pr fetch --quiet https://github.com/${{ github.repository }} ${{ github.event.pull_request.base.sha }}
-          bad=$(git -C pr diff --name-only ${{ github.event.pull_request.base.sha }} HEAD | grep -v '^items/' || true)
+          bad=$(gh pr view ${{ github.event.pull_request.number }} -R ${{ github.repository }} --json files --jq '.files[].path' | grep -v '^items/' || true)
           if [ -n "$bad" ] && [ "${{ github.event.pull_request.author_association }}" != "OWNER" ] && [ "${{ github.event.pull_request.author_association }}" != "MEMBER" ]; then
             echo "::error::A submission changes only items/<id>/. Also changed: $bad"; exit 1; fi
       - run: node scripts/catalog.mjs check --root pr --base .

@@ -1,0 +1,4 @@
+{ "type": "widgets", "tags": ["stats", "screen time", "chart"], "screenshots": [
+  { "file": "1.jpg", "caption": "Today, the week and the most used layouts, Mac apps and themes on one layout" },
+  { "file": "2.jpg", "caption": "Screen time today and this week" }
+] }

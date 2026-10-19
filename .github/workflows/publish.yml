@@ -1,0 +1,29 @@
+# After an editor merges: a release per new version (installs are its download count), an issue per new item
+# (likes are its 👍), then index.json, which the website reads. Every six hours too, so the numbers stay fresh.
+name: Publish
+on:
+  push: { branches: [main], paths: ["items/**", "editors-picks.json"] }
+  schedule: [{ cron: "17 */6 * * *" }]
+  workflow_dispatch:
+permissions: { contents: write, issues: write }
+concurrency: publish
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    env: { GH_TOKEN: "${{ github.token }}" }
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 0 }
+      - run: node scripts/catalog.mjs check
+      - run: node scripts/catalog.mjs publish
+      - run: node scripts/catalog.mjs index
+      - name: Commit index.json
+        run: |
+          git diff --quiet index.json && exit 0
+          git config user.name "catalog" && git config user.email "catalog@users.noreply.github.com"
+          git commit -m "index: $(date -u +%F)" index.json && git push
+      # rebuilds the website so /community/ shows it (Cloudflare Pages ▸ Settings ▸ Deploy hooks)
+      - if: env.HOOK != ''
+        run: curl -fsS -X POST "$HOOK" > /dev/null
+        env: { HOOK: "${{ secrets.SITE_DEPLOY_HOOK }}" }

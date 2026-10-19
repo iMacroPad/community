@@ -1,0 +1,114 @@
+{
+  "format": 1,
+  "id": "community.status-widgets",
+  "name": "Status widgets",
+  "version": "1.0.0",
+  "author": "iMacroPad community",
+  "blurb": "A general widget pack: a note card, a static HTML status board, a chart and two keys. Works on any layout.",
+  "icon": "square.grid.3x3.square",
+  "permissions": [
+    {
+      "capability": "html",
+      "reason": "The status board is a small static HTML table; it has no script and loads nothing."
+    },
+    {
+      "capability": "keys",
+      "reason": "The Screenshot key presses its system shortcut and the Scroll dial scrolls the page."
+    }
+  ],
+  "components": [
+    {
+      "kind": "markdown",
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 0.5,
+        "h": 0.25
+      },
+      "style": {
+        "tint": "surface",
+        "label": "Note card"
+      },
+      "content": "# Today\n- Stand-up 10:00\n- Ship the **plugin** work\n- *Stretch*"
+    },
+    {
+      "kind": "html",
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 0.5,
+        "h": 0.25
+      },
+      "style": {
+        "tint": "surface",
+        "label": "Status board"
+      },
+      "content": "<table style=\"width:100%\"><tr><th style=\"text-align:left\">Service</th><th>State</th></tr><tr><td>API</td><td style=\"color:#4CD964\">● up</td></tr><tr><td>Builds</td><td style=\"color:#FFCC00\">● slow</td></tr><tr><td>Mail</td><td style=\"color:#4CD964\">● up</td></tr></table>"
+    },
+    {
+      "kind": "chart",
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 0.5,
+        "h": 0.25
+      },
+      "style": {
+        "tint": "surface",
+        "label": "Week"
+      },
+      "content": "line\nMon, 3\nTue, 5\nWed, 4\nThu, 8\nFri, 6"
+    },
+    {
+      "kind": "button",
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 0.167,
+        "h": 0.125
+      },
+      "style": {
+        "iconSystemName": "camera",
+        "label": "Screenshot"
+      },
+      "action": {
+        "keyChord": {
+          "_0": {
+            "key": "4",
+            "modifiers": [
+              "command",
+              "shift"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "kind": "knob",
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 0.333,
+        "h": 0.25
+      },
+      "style": {
+        "tint": "accent",
+        "shape": "circle",
+        "iconSystemName": "arrow.up.arrow.down",
+        "label": "Scroll"
+      },
+      "action": {
+        "scrollBy": {
+          "dx": 0,
+          "dy": 3
+        }
+      },
+      "altAction": {
+        "scrollBy": {
+          "dx": 0,
+          "dy": -3
+        }
+      }
+    }
+  ]
+}

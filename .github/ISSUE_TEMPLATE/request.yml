@@ -1,0 +1,16 @@
+name: Request something
+description: A layout, widget, theme, plugin or workflow you would like someone to make. 👍 the requests you want too.
+title: "[request] "
+labels: [request]
+body:
+  - type: dropdown
+    id: type
+    attributes: { label: What kind, options: [Layout for an app, Widget or widget pack, Theme, Plugin with integrations, Macro or workflow, Something else] }
+    validations: { required: true }
+  - type: input
+    id: app
+    attributes: { label: For which app or service, placeholder: "e.g. DaVinci Resolve, Home Assistant, Ableton Live" }
+  - type: textarea
+    id: what
+    attributes: { label: What should it do, description: The keys, dials or panels you picture, and what each one does. }
+    validations: { required: true }

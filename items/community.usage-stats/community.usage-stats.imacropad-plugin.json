@@ -1,0 +1,73 @@
+{
+  "format": 1,
+  "id": "community.usage-stats",
+  "name": "Usage stats",
+  "version": "1.0.0",
+  "author": "iMacroPad community",
+  "blurb": "Your own pad in numbers, on any layout or the screensaver: screen time today, the week as a chart, the layouts, Mac apps and themes you use most, and the keys you press most. Read from Settings ▸ Stats on this iPad; nothing leaves it.",
+  "icon": "chart.bar.xaxis",
+  "permissions": [
+    {
+      "capability": "html",
+      "reason": "The leaderboard draws its bars as a small static HTML page; it has no script and loads nothing."
+    }
+  ],
+  "components": [
+    {
+      "kind": "markdown",
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 0.5,
+        "h": 0.25
+      },
+      "style": {
+        "tint": "surface",
+        "label": "Today"
+      },
+      "content": "# {{stats.today.screenTime}}\non the pad today · **{{stats.today.taps}}** taps\n\n---\n{{#stats.layouts|3}}- **{{name}}** · {{time}}\n{{/stats.layouts}}{{^stats.layouts}}Nothing counted yet.\n{{/stats.layouts}}"
+    },
+    {
+      "kind": "chart",
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 0.5,
+        "h": 0.25
+      },
+      "style": {
+        "tint": "surface",
+        "label": "Screen time this week"
+      },
+      "content": "bar\n{{#stats.days}}{{day}}, {{minutes}}\n{{/stats.days}}"
+    },
+    {
+      "kind": "html",
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 0.5,
+        "h": 0.5
+      },
+      "style": {
+        "tint": "surface",
+        "label": "Most used"
+      },
+      "content": "<div style=\"font-size:11px;letter-spacing:.06em;opacity:.6\">LAYOUTS</div>{{#stats.layouts|4}}<div style=\"margin:3px 0\"><div style=\"display:flex;justify-content:space-between;font-size:13px\"><span>{{name}}</span><span style=\"opacity:.6\">{{time}}</span></div><div style=\"height:5px;border-radius:3px;background:rgba(127,127,127,.25)\"><div style=\"height:5px;border-radius:3px;width:{{share}}%;background:currentColor;opacity:.8\"></div></div></div>{{/stats.layouts}}<div style=\"font-size:11px;letter-spacing:.06em;opacity:.6;margin-top:8px\">MAC APPS</div>{{#stats.apps|4}}<div style=\"margin:3px 0\"><div style=\"display:flex;justify-content:space-between;font-size:13px\"><span>{{name}}</span><span style=\"opacity:.6\">{{time}}</span></div><div style=\"height:5px;border-radius:3px;background:rgba(127,127,127,.25)\"><div style=\"height:5px;border-radius:3px;width:{{share}}%;background:currentColor;opacity:.8\"></div></div></div>{{/stats.apps}}{{^stats.apps}}<div style=\"font-size:13px;opacity:.6\">Counted while a Mac is connected</div>{{/stats.apps}}<div style=\"font-size:11px;letter-spacing:.06em;opacity:.6;margin-top:8px\">THEMES</div>{{#stats.themes|3}}<div style=\"margin:3px 0\"><div style=\"display:flex;justify-content:space-between;font-size:13px\"><span>{{name}}</span><span style=\"opacity:.6\">{{time}}</span></div><div style=\"height:5px;border-radius:3px;background:rgba(127,127,127,.25)\"><div style=\"height:5px;border-radius:3px;width:{{share}}%;background:currentColor;opacity:.8\"></div></div></div>{{/stats.themes}}"
+    },
+    {
+      "kind": "markdown",
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 0.5,
+        "h": 0.25
+      },
+      "style": {
+        "tint": "surface",
+        "label": "Top keys"
+      },
+      "content": "### Most pressed\n{{#stats.widgets}}{{rank}}. **{{name}}** · {{taps}}×\n{{/stats.widgets}}{{^stats.widgets}}Press a few keys first.\n{{/stats.widgets}}\n> {{stats.taps}} taps and {{stats.screenTime}} since {{stats.since}}"
+    }
+  ]
+}

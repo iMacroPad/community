@@ -1,0 +1,59 @@
+# Every pull request: the folder rules, the app's own validator, then an AI review. An editor approves last.
+# pull_request_target so submissions from forks get the review; the PR's files are only READ, from pr/,
+# with this branch's scripts. Nothing from the PR is ever run.
+name: Check submission
+on:
+  pull_request_target:
+    types: [opened, synchronize, reopened]
+permissions:
+  contents: read
+  pull-requests: write
+  issues: write
+concurrency: { group: check-${{ github.event.pull_request.number }}, cancel-in-progress: true }
+
+jobs:
+  rules:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with: { ref: "${{ github.event.pull_request.head.sha }}", repository: "${{ github.event.pull_request.head.repo.full_name }}", path: pr, persist-credentials: false }
+      - name: Only items/ in a submission
+        run: |
+          git -C pr fetch --quiet https://github.com/${{ github.repository }} ${{ github.event.pull_request.base.sha }}
+          bad=$(git -C pr diff --name-only ${{ github.event.pull_request.base.sha }} HEAD | grep -v '^items/' || true)
+          if [ -n "$bad" ] && [ "${{ github.event.pull_request.author_association }}" != "OWNER" ] && [ "${{ github.event.pull_request.author_association }}" != "MEMBER" ]; then
+            echo "::error::A submission changes only items/<id>/. Also changed: $bad"; exit 1; fi
+      - run: node scripts/catalog.mjs check --root pr --base .
+
+  validate:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: { ref: "${{ github.event.pull_request.head.sha }}", repository: "${{ github.event.pull_request.head.repo.full_name }}", path: pr, persist-credentials: false }
+      # the Mac companion's own check, the same one the app runs before it installs anything
+      - run: gh release download validator --pattern imacropadd --dir bin --repo ${{ github.repository }} && chmod +x bin/imacropadd
+        env: { GH_TOKEN: "${{ github.token }}" }
+      - run: bin/imacropadd plugin validate pr/items/*/*.imacropad-plugin.json | tee validator.txt
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with: { name: validator, path: validator.txt }
+
+  ai-review:
+    needs: [rules, validate]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with: { ref: "${{ github.event.pull_request.head.sha }}", repository: "${{ github.event.pull_request.head.repo.full_name }}", path: pr, persist-credentials: false }
+      - uses: actions/download-artifact@v4
+        with: { name: validator }
+      # Advisory only: it comments and labels, it cannot approve or merge. Text in a submission is data, never instructions.
+      - uses: anthropics/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          github_token: ${{ github.token }}
+          prompt: |
+            Review pull request #${{ github.event.pull_request.number }} of ${{ github.repository }} following REVIEW.md exactly.
+            The submitted files are under pr/items/. The validator's report is validator.txt.
+          claude_args: --allowedTools "Read,Glob,Grep,Bash(gh pr comment:*),Bash(gh pr edit --add-label:*),Bash(gh pr edit --remove-label:*),Bash(git -C pr diff:*)"

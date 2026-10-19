@@ -1,0 +1,6 @@
+{ "type": "widgets", "tags": ["sports", "f1", "football", "live data"], "screenshots": [
+  { "file": "1.jpg", "caption": "An F1 layout on an iPad mini: team, driver, next race and the drivers' table, live" },
+  { "file": "2.jpg", "caption": "Your team's standing: Ferrari, P2 in the constructors' championship" },
+  { "file": "3.jpg", "caption": "Your driver's standing: Lewis Hamilton, P3" },
+  { "file": "4.jpg", "caption": "The next race, practice and qualifying in your own time zone" }
+] }

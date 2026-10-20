@@ -1,0 +1,232 @@
+{
+ "repo": "iMacroPad/community",
+ "types": [
+  "plugin",
+  "layout",
+  "theme",
+  "widgets",
+  "integration",
+  "workflow"
+ ],
+ "items": [
+  {
+   "id": "community.ai-studio",
+   "name": "AI Studio",
+   "version": "1.1.0",
+   "author": "iMacroPad community",
+   "blurb": "Keys that call AI services: an image from the text on your clipboard (Gemini 2.5 Flash Image, “Nano Banana”), a short answer to it, a video through an MCP server, and one of your own Shortcuts.",
+   "icon": "sparkles",
+   "app": null,
+   "type": "integration",
+   "tags": [
+    "ai",
+    "gemini",
+    "mcp",
+    "clipboard"
+   ],
+   "readme": "Keys that send the text on your clipboard to AI services and bring the answer back to your Mac.\n\n## What you get\n\n- **Image from clipboard**: sends your clipboard text to Google's Gemini 2.5 Flash Image and saves the picture\n  as a PNG in Downloads/iMacroPad, then opens it.\n- **Answer the clipboard**: sends your clipboard text to Google's Gemini 2.5 Flash and puts a short answer on\n  your clipboard.\n- **Video (MCP)**: sends your clipboard text to the `generate_video` tool of Higgsfield's MCP server\n  (`mcp.higgsfield.ai`). The server answers with a link, which opens in your browser.\n- **My Shortcut**: runs a Shortcut named exactly **AI Studio**. It is not included: make your own in the\n  Shortcuts app first. Without it the key does nothing.\n- **Copy** and **Paste**: ⌘C and ⌘V, to copy a prompt and paste an answer.\n- A *How to use* card and the *AI Studio Neon* theme.\n\n## Before you start\n\n1. **Gemini** (image and answer keys): get an API key at Google AI Studio and put it into the Mac's keychain\n   as `GEMINI_API_KEY`.\n2. **Higgsfield** (video key): get an access token from your Higgsfield account and put it into the Mac's\n   keychain as `HIGGSFIELD_TOKEN`. Skip this if you don't want the video key.\n3. Install, then switch on only the permissions you want. What stays off is removed from your copy.\n\nThe plugin file never holds a key.\n\n## What leaves your Mac\n\nNothing is sent until you press a key. Then only your clipboard text goes out: to Google for the image and\nanswer keys, to Higgsfield for the video key. Their own terms apply to what you send.\n",
+   "screenshots": [
+    {
+     "path": "items/community.ai-studio/screenshots/1.jpg",
+     "caption": "The AI Studio layout in its own Neon theme, with its how-to card under the keys"
+    }
+   ],
+   "contents": {
+    "layouts": 1,
+    "themes": 1,
+    "widgets": 1,
+    "integrations": 3,
+    "gestures": 0,
+    "macros": 0
+   },
+   "permissions": [
+    {
+     "capability": "keys",
+     "reason": "The Copy and Paste keys press ⌘C and ⌘V so a prompt can be copied and an answer pasted."
+    },
+    {
+     "capability": "shortcuts",
+     "reason": "The My Shortcut key runs your own Shortcut named “AI Studio”."
+    },
+    {
+     "capability": "network",
+     "reason": "The image, answer and video keys call Google's Gemini API and the Higgsfield MCP server."
+    },
+    {
+     "capability": "clipboard",
+     "reason": "The text on your clipboard is the prompt that is sent to those services."
+    },
+    {
+     "capability": "saveFiles",
+     "reason": "A generated image is saved as a PNG in Downloads/iMacroPad and opened."
+    },
+    {
+     "capability": "openLinks",
+     "reason": "A generated video comes back as a web link, which is opened in your browser."
+    }
+   ],
+   "hosts": [
+    "generativelanguage.googleapis.com",
+    "mcp.higgsfield.ai"
+   ],
+   "file": "https://github.com/iMacroPad/community/releases/download/community.ai-studio%401.1.0/community.ai-studio.imacropad-plugin.json",
+   "added": "2026-10-19",
+   "updated": "2026-10-19",
+   "pick": false,
+   "installs": 1,
+   "likes": 0,
+   "issue": 1
+  },
+  {
+   "id": "community.sports-scores",
+   "name": "Sports scores",
+   "version": "2.1.0",
+   "author": "iMacroPad community",
+   "blurb": "Your teams in their own colours: team card, match countdown, scoreboard, full league tables (Europe, the US leagues, any country), player card, tennis rankings and Formula 1. Any sport and country: search, or browse sport ▸ country ▸ league. Five looks, six layouts. Data: TheSportsDB, ESPN, Jolpica.",
+   "icon": "sportscourt",
+   "app": null,
+   "type": "widgets",
+   "tags": [
+    "sports",
+    "football",
+    "formula 1",
+    "nba",
+    "tennis",
+    "live scores"
+   ],
+   "readme": "Your teams in their own colours, on your pad: club cards, match countdowns, scoreboards, full league tables, player\ncards, tennis rankings and Formula 1. Any sport and any country.\n\n## What you get\n\nSix ready layouts, each a page of the app's own sports panels:\n\n- **Formula 1**: the next race with a live countdown and every session time in your time zone, driver cards\n  with their photos (Lewis Hamilton, Charles Leclerc), a team card with the car (Ferrari), and the drivers' and constructors' standings.\n- **Football · Süper Lig**: Galatasaray's club card with the next and last match, a countdown to the next match,\n  the last result as a scoreboard, the full league table and a player card (Victor Osimhen).\n- **Football · Europe**: full Premier League, LaLiga and Champions League tables, and Real Madrid's card.\n- **US leagues**: NFL, NHL and NBA standings by conference, and the Chiefs' last game.\n- **Tennis**: the ATP and WTA rankings.\n- **Around the world**: Lakers, Maple Leafs, MLS, Halkbank Ankara volleyball and more.\n\n24 panels in all, to add to any layout: team card, next match, last result, league table, player card, F1 next\nrace, F1 drivers, F1 constructors, F1 driver and team cards, ATP and WTA rankings. Each panel has five looks:\nclub colours, photo, scoreboard, minimal or automatic.\n\n## Set your own team\n\nNobody needs to look up an ID. Press **Edit**, select a panel and choose **Team**, **League** or **Player**:\nsearch by name, or browse sport ▸ country ▸ league. F1 panels have a **Driver** or **Team** picker.\n\n## Where the data comes from\n\nThe panels fetch from the iPad itself, with no account and no key:\n[TheSportsDB](https://www.thesportsdb.com) (teams, players, any league),\nESPN's public scoreboards (full tables for the big leagues) and\n[Jolpica](https://github.com/jolpica/jolpica-f1) (Formula 1). Only the team, league or player you picked is sent.\nTheSportsDB's free feed lists up to ten teams of a league; search by name for any other.\n\nIt asks for no permissions: it never presses a key on your Mac.\n",
+   "screenshots": [
+    {
+     "path": "items/community.sports-scores/screenshots/6.jpg",
+     "caption": "Around the world: Lakers, Maple Leafs, MLS, Halkbank volleyball and the Chiefs"
+    },
+    {
+     "path": "items/community.sports-scores/screenshots/1.jpg",
+     "caption": "Formula 1: next race with a countdown, Hamilton's and Leclerc's cards, Ferrari's car and standing, both tables"
+    },
+    {
+     "path": "items/community.sports-scores/screenshots/2.jpg",
+     "caption": "Süper Lig: Galatasaray's club card, next match, last result, the league table and a player card"
+    },
+    {
+     "path": "items/community.sports-scores/screenshots/3.jpg",
+     "caption": "Europe: full Premier League, LaLiga and Champions League tables, and Real Madrid's card"
+    },
+    {
+     "path": "items/community.sports-scores/screenshots/4.jpg",
+     "caption": "US leagues: NFL, NHL and NBA standings by conference, and the Chiefs' last game"
+    },
+    {
+     "path": "items/community.sports-scores/screenshots/5.jpg",
+     "caption": "Tennis: the ATP and WTA rankings with the world number ones"
+    }
+   ],
+   "contents": {
+    "layouts": 6,
+    "themes": 0,
+    "widgets": 24,
+    "integrations": 0,
+    "gestures": 0,
+    "macros": 0
+   },
+   "permissions": [],
+   "hosts": [],
+   "file": "https://github.com/iMacroPad/community/releases/download/community.sports-scores%402.1.0/community.sports-scores.imacropad-plugin.json",
+   "added": "2026-10-19",
+   "updated": "2026-10-20",
+   "pick": true,
+   "installs": 0,
+   "likes": 1,
+   "issue": 2
+  },
+  {
+   "id": "community.status-widgets",
+   "name": "Status widgets",
+   "version": "2.0.0",
+   "author": "iMacroPad community",
+   "blurb": "Is it down, or is it me? The status of the services you depend on — GitHub, Cloudflare, Claude, OpenAI, Vercel, npm, Docker, Jira, Figma and more, or any status page you add — with a coloured banner when something breaks and the incident's name, plus site monitors that check an address every 30 seconds and draw its response times and uptime. A Status board layout comes with it.",
+   "icon": "square.grid.3x3.square",
+   "app": null,
+   "type": "widgets",
+   "tags": [
+    "status",
+    "uptime",
+    "monitoring",
+    "developer"
+   ],
+   "readme": "Is it down, or is it me? The status of the services you depend on, and your own sites, on your pad.\n\n## What you get\n\n- **Service status**: GitHub, Cloudflare, Claude, OpenAI, Vercel, npm, Docker, Supabase, Atlassian, Jira,\n  Figma, Notion, Linear, Discord, Dropbox, Stripe and more, or any status page you add. When something breaks,\n  the panel's banner turns orange or red and names the incident. A minor note on one\n  service (such as degraded performance) shows on its row without changing the banner.\n- **Site monitors**: check an address every 30 seconds and draw its response time and uptime.\n- A **Status board** layout with two service groups (developer services, work tools) and three site monitors:\n  apple.com, github.com and www.imacropad.app, checked from the first run. Change or remove them in the editor.\n- A **Screenshot** key and a **Scroll** dial in the panel list, to add to any layout.\n\n## Make it yours\n\nPress **Edit** and select a panel: pick the services a group shows, or type the address a monitor checks\n(*Your site* is waiting for yours).\n\n## Good to know\n\n- The status comes from each service's public status page. The monitors call the address from the iPad itself.\n  Nothing else is sent anywhere.\n- The only permission is **keys**: the Screenshot key presses the system shortcut and the dial scrolls.\n",
+   "screenshots": [
+    {
+     "path": "items/community.status-widgets/screenshots/1.jpg",
+     "caption": "The Status board: developer services and work tools at a glance, and three site monitors"
+    }
+   ],
+   "contents": {
+    "layouts": 1,
+    "themes": 0,
+    "widgets": 7,
+    "integrations": 0,
+    "gestures": 0,
+    "macros": 0
+   },
+   "permissions": [
+    {
+     "capability": "keys",
+     "reason": "The Screenshot key presses its system shortcut and the Scroll dial scrolls the page."
+    }
+   ],
+   "hosts": [],
+   "file": "https://github.com/iMacroPad/community/releases/download/community.status-widgets%402.0.0/community.status-widgets.imacropad-plugin.json",
+   "added": "2026-10-19",
+   "updated": "2026-10-19",
+   "pick": false,
+   "installs": 0,
+   "likes": 0,
+   "issue": 3
+  },
+  {
+   "id": "community.usage-stats",
+   "name": "Usage stats",
+   "version": "2.0.0",
+   "author": "iMacroPad community",
+   "blurb": "Your own pad in numbers, drawn like Settings ▸ Stats and in your theme's colours: today's screen time with the week as a sparkline, the last 14 days, the layouts, Mac apps and themes you use most as rings, the hours you use it and the keys you press most. For any layout or the screensaver, with two ready layouts. Counted on this iPad; nothing leaves it.",
+   "icon": "chart.bar.xaxis",
+   "app": null,
+   "type": "widgets",
+   "tags": [
+    "stats",
+    "screen time",
+    "dashboard"
+   ],
+   "readme": "Your own pad in numbers, drawn like Settings ▸ Stats and in your theme's colours.\n\n## What you get\n\n- **Today**: screen time and taps, with the week as a sparkline.\n- **Screen time chart**: the last 14 days, with your daily average.\n- **Time of day**: the hours you use the pad most.\n- **Most used** layouts, Mac apps and themes, as rings.\n- **Most pressed keys**.\n- A **Stats dashboard** panel that puts the main numbers together.\n- Two ready layouts: *Stats* and *Stats · keys & themes*. Every panel can go on any layout or on the screensaver.\n\n## Good to know\n\n- Everything is counted on this iPad and never leaves it. There is nothing to set up and no permission to grant.\n- The numbers grow as you use the pad: a new install starts empty. The screenshots show sample stats.\n",
+   "screenshots": [
+    {
+     "path": "items/community.usage-stats/screenshots/1.jpg",
+     "caption": "The Stats layout: today, the hours you use it, the last 14 days, top layouts and Mac apps (sample stats)"
+    },
+    {
+     "path": "items/community.usage-stats/screenshots/2.jpg",
+     "caption": "Stats · keys & themes: the dashboard, the keys you press most and your themes (sample stats)"
+    }
+   ],
+   "contents": {
+    "layouts": 2,
+    "themes": 0,
+    "widgets": 8,
+    "integrations": 0,
+    "gestures": 0,
+    "macros": 0
+   },
+   "permissions": [],
+   "hosts": [],
+   "file": "https://github.com/iMacroPad/community/releases/download/community.usage-stats%402.0.0/community.usage-stats.imacropad-plugin.json",
+   "added": "2026-10-19",
+   "updated": "2026-10-20",
+   "pick": true,
+   "installs": 0,
+   "likes": 0,
+   "issue": 4
+  }
+ ],
+ "requests": []
+}

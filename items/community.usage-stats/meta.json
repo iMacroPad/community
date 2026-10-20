@@ -1,4 +1,4 @@
 { "type": "widgets", "tags": ["stats", "screen time", "dashboard"], "screenshots": [
-  { "file": "1.jpg", "caption": "The Stats layout: today, the hours you use it, the last 14 days, top layouts and Mac apps (sample stats)" },
-  { "file": "2.jpg", "caption": "Stats · keys & themes: the dashboard, the keys you press most and your themes (sample stats)" }
+  {"file": "2.jpg", "caption": "Stats · keys & themes: the dashboard, the keys you press most and your themes (sample stats)"},
+  {"file": "1.jpg", "caption": "The Stats layout: today, the hours you use it, the last 14 days, top layouts and Mac apps (sample stats)"}
 ] }

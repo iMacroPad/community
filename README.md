@@ -10,7 +10,7 @@ Browse and install them at **[imacropad.app/community](https://www.imacropad.app
 - **Request**: [ask for something](../../issues/new?template=request.yml) or 👍 a request.
 - **Share yours**: [CONTRIBUTING.md](CONTRIBUTING.md).
 - **Build with AI**: the [MCP server](mcp/) gives an assistant the plugin format, starter plugins, themes and layouts,
-  and the validator (`claude mcp add imacropad -- npx -y @imacropad/mcp`); the [skill](skill/imacropad-community/)
+  and the validator (`curl -fsSL https://raw.githubusercontent.com/iMacroPad/community/main/mcp/install.sh | sh`); the [skill](skill/imacropad-community/)
   teaches it the steps. The skill as a zip: [imacropad.app/community](https://www.imacropad.app/community/#ai).
 
 Every item is data, never code, and passes four gates before it is listed: the folder rules, the app's own

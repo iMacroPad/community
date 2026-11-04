@@ -1,0 +1,257 @@
+{
+  "format": 1,
+  "id": "community.prayer-times",
+  "name": "Prayer times",
+  "version": "1.0.0",
+  "author": "iMacroPad community",
+  "blurb": "Prayer times on your pad and in the screensaver: the next prayer with a countdown, the day's six times, the makruh (kerahat) windows and the day's circle of sun and night. Diyanet's official list for any district or 20 calculation methods, your own temkin and kerahat minutes, reminders, a colour for kerahat, in five languages.",
+  "icon": "moon.stars",
+  "components": [
+    {
+      "kind": "info",
+      "frame": {
+        "x": 0.0,
+        "y": 0.0,
+        "w": 0.5,
+        "h": 0.25
+      },
+      "style": {
+        "tint": "surface",
+        "label": "Next prayer"
+      },
+      "infoID": "prayer.next"
+    },
+    {
+      "kind": "info",
+      "frame": {
+        "x": 0.0,
+        "y": 0.0,
+        "w": 0.5,
+        "h": 0.25
+      },
+      "style": {
+        "tint": "surface",
+        "label": "Next prayer, in words"
+      },
+      "infoID": "prayer.next",
+      "settings": {
+        "countdown": "words"
+      }
+    },
+    {
+      "kind": "info",
+      "frame": {
+        "x": 0.0,
+        "y": 0.0,
+        "w": 0.5,
+        "h": 0.5
+      },
+      "style": {
+        "tint": "surface",
+        "label": "Prayer times today"
+      },
+      "infoID": "prayer.day"
+    },
+    {
+      "kind": "info",
+      "frame": {
+        "x": 0.0,
+        "y": 0.0,
+        "w": 0.5,
+        "h": 0.25
+      },
+      "style": {
+        "tint": "surface",
+        "label": "Kerahat (makruh) times"
+      },
+      "infoID": "prayer.kerahat"
+    },
+    {
+      "kind": "info",
+      "frame": {
+        "x": 0.0,
+        "y": 0.0,
+        "w": 0.6667,
+        "h": 0.5
+      },
+      "style": {
+        "tint": "surface",
+        "label": "Day circle"
+      },
+      "infoID": "prayer.sky"
+    },
+    {
+      "kind": "info",
+      "frame": {
+        "x": 0.0,
+        "y": 0.0,
+        "w": 0.5,
+        "h": 0.5
+      },
+      "style": {
+        "tint": "surface",
+        "label": "Prayer times, Hanafi asr"
+      },
+      "infoID": "prayer.day",
+      "settings": {
+        "asr": "hanafi"
+      }
+    }
+  ],
+  "profiles": [
+    {
+      "name": "Prayer board",
+      "icon": "moon.stars",
+      "layout": {
+        "columns": 12,
+        "rows": 8,
+        "backgroundHex": "#000000",
+        "widgets": [
+          {
+            "kind": "info",
+            "frame": {
+              "x": 0.0,
+              "y": 0.0,
+              "w": 0.5,
+              "h": 1.0
+            },
+            "style": {
+              "tint": "surface",
+              "label": "Day circle"
+            },
+            "infoID": "prayer.sky"
+          },
+          {
+            "kind": "info",
+            "frame": {
+              "x": 0.5,
+              "y": 0.0,
+              "w": 0.5,
+              "h": 0.5
+            },
+            "style": {
+              "tint": "surface",
+              "label": "Next prayer"
+            },
+            "infoID": "prayer.next",
+            "settings": {
+              "countdown": "words",
+              "remind": "15",
+              "remindKerahat": "on"
+            }
+          },
+          {
+            "kind": "info",
+            "frame": {
+              "x": 0.5,
+              "y": 0.5,
+              "w": 0.25,
+              "h": 0.5
+            },
+            "style": {
+              "tint": "surface",
+              "label": "Prayer times today"
+            },
+            "infoID": "prayer.day"
+          },
+          {
+            "kind": "info",
+            "frame": {
+              "x": 0.75,
+              "y": 0.5,
+              "w": 0.25,
+              "h": 0.5
+            },
+            "style": {
+              "tint": "surface",
+              "label": "Kerahat"
+            },
+            "infoID": "prayer.kerahat"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Prayer times",
+      "icon": "moon.stars",
+      "isSaver": true,
+      "layout": {
+        "columns": 12,
+        "rows": 8,
+        "backgroundHex": "#000000",
+        "widgets": [
+          {
+            "kind": "info",
+            "frame": {
+              "x": 0.0,
+              "y": 0.0,
+              "w": 0.4167,
+              "h": 1.0
+            },
+            "style": {
+              "tint": "surface",
+              "label": "Day circle"
+            },
+            "infoID": "prayer.sky"
+          },
+          {
+            "kind": "info",
+            "frame": {
+              "x": 0.4167,
+              "y": 0.0,
+              "w": 0.25,
+              "h": 1.0
+            },
+            "style": {
+              "tint": "surface",
+              "label": "Prayer times today"
+            },
+            "infoID": "prayer.day"
+          },
+          {
+            "kind": "info",
+            "frame": {
+              "x": 0.6667,
+              "y": 0.0,
+              "w": 0.3333,
+              "h": 0.375
+            },
+            "style": {
+              "tint": "surface",
+              "label": "Clock"
+            },
+            "infoID": "clock.digital"
+          },
+          {
+            "kind": "info",
+            "frame": {
+              "x": 0.6667,
+              "y": 0.375,
+              "w": 0.3333,
+              "h": 0.375
+            },
+            "style": {
+              "tint": "surface",
+              "label": "Next prayer"
+            },
+            "infoID": "prayer.next"
+          },
+          {
+            "kind": "info",
+            "frame": {
+              "x": 0.6667,
+              "y": 0.75,
+              "w": 0.3333,
+              "h": 0.25
+            },
+            "style": {
+              "tint": "surface",
+              "label": "Kerahat"
+            },
+            "infoID": "prayer.kerahat"
+          }
+        ]
+      }
+    }
+  ]
+}
